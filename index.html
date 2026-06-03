@@ -56,9 +56,7 @@
       line-height: 1.45;
     }
 
-    button, input, select, textarea {
-      font: inherit;
-    }
+    button, input, select, textarea { font: inherit; }
 
     button {
       min-height: var(--tap);
@@ -113,6 +111,8 @@
     .brand span { color: var(--muted); font-size: 14px; }
     .actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .primary { background: var(--primary); color: white; }
+    .undo-btn { background: #6b7280; color: white; font-weight: bold; }
+    .undo-btn:hover { background: #4b5563; }
     .danger { background: color-mix(in srgb, var(--danger) 16%, var(--surface)); color: var(--danger); }
     .ghost { background: transparent; border: 1px solid var(--line); }
     .small { min-height: 38px; padding: 7px 10px; font-size: 14px; }
@@ -136,11 +136,7 @@
       flex-wrap: wrap;
     }
 
-    .kid-selector, .segmented {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .kid-selector, .segmented { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .kid-button {
       min-width: 150px;
@@ -185,7 +181,7 @@
     .metric strong { font-size: 28px; }
     .metric span { color: var(--muted); font-size: 14px; }
 
-    .week-grid, .kanban-grid {
+    .kanban-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(180px, 1fr));
       gap: 14px;
@@ -193,40 +189,42 @@
       padding-bottom: 8px;
     }
 
-    .day-card, .kanban-column {
+    .kanban-column {
       min-width: 180px;
       padding: 14px;
       display: grid;
       align-content: start;
       gap: 12px;
+      white-space: pre-wrap;
+      word-break: break-all;
     }
 
-    .day-card.all-done, .kanban-column.all-done {
+    .kanban-column.all-done {
       background: color-mix(in srgb, var(--good-bg) 70%, var(--surface));
       border-color: color-mix(in srgb, var(--good) 45%, var(--line));
     }
 
-    .day-title { display: grid; gap: 4px; }
+    .day-title { display: grid; gap: 4px; margin-bottom: 6px; }
     .day-title strong { font-size: 18px; }
     .day-title span { color: var(--muted); font-size: 13px; }
     .empty { color: var(--muted); font-size: 14px; padding: 12px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
 
     .task-card {
       display: grid;
-      gap: 10px;
+      gap: 6px;
       padding: 12px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--line);
       background: var(--surface);
       box-shadow: 0 5px 14px rgba(31, 41, 55, .08);
+      white-space: pre-wrap;
+      word-break: break-all;
     }
 
     .task-card.done { background: var(--good-bg); border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
-    .task-card.locked { opacity: .92; }
     .task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-    .task-title { font-weight: 900; overflow-wrap: anywhere; }
-    .task-type { font-size: 13px; color: var(--muted); white-space: nowrap; }
-    .task-memo { color: var(--muted); font-size: 14px; overflow-wrap: anywhere; }
+    .task-title { font-weight: 900; overflow-wrap: anywhere; font-size: 18px; }
+    .task-memo { color: var(--text); background: var(--surface-2); padding: 6px 8px; border-radius: 6px; font-size: 14px; overflow-wrap: anywhere; border-left: 3px solid var(--primary); }
     .status-pill {
       min-height: 34px;
       border-radius: 999px;
@@ -236,11 +234,10 @@
       background: var(--surface-2);
     }
     .status-pill.done { color: var(--good); background: color-mix(in srgb, var(--good-bg) 80%, var(--surface)); }
-    .status-pill.locked { color: var(--warn); }
 
     .admin-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
       gap: 18px;
       align-items: start;
     }
@@ -249,7 +246,6 @@
     .panel { padding: 18px; display: grid; gap: 14px; }
     .panel-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
     .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: end; }
-    .form-grid.one { grid-template-columns: 1fr; }
     .inline-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: end; }
     .list { display: grid; gap: 10px; }
     .list-row {
@@ -263,12 +259,19 @@
       background: color-mix(in srgb, var(--surface) 84%, var(--surface-2));
     }
     .list-row strong { overflow-wrap: anywhere; }
-    .switch-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-    #calendar {
-      min-height: 620px;
+    /* 支援拉動大小的日曆外容器 */
+    .calendar-container {
+      min-height: 600px;
+      height: 800px; 
       padding: 10px;
+      resize: both; /* 允許自由拖曳右下角縮放 */
+      overflow: auto; /* 必要配合屬性 */
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
     }
+    #calendar, #front-calendar { height: 100%; min-height: 100%; }
 
     .fc {
       --fc-border-color: var(--line);
@@ -277,27 +280,37 @@
       --fc-list-event-hover-bg-color: var(--surface-2);
       color: var(--text);
     }
-    .fc .fc-button-primary {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
+    .fc .fc-button-primary { background: var(--primary); border-color: var(--primary); }
     .fc .fc-daygrid-day { cursor: pointer; }
+    .fc-event-title { white-space: pre-wrap !important; word-break: break-all !important; font-weight: bold; }
 
-    details {
+    details.panel-details {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
       overflow: hidden;
     }
-    summary {
+    details.panel-details summary.panel-summary {
       cursor: pointer;
-      padding: 14px 16px;
+      padding: 18px;
       font-weight: 900;
+      font-size: 24px;
       background: var(--surface-2);
+      list-style: none;
     }
+    details.panel-details summary.panel-summary::-webkit-details-marker { display: none; }
+    .panel-content { padding: 18px; display: grid; gap: 14px; }
+
+    details.subject-details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+    }
+    summary.subject-summary { cursor: pointer; padding: 14px 16px; font-weight: 900; background: var(--surface-2); }
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; min-width: 820px; }
-    th, td { padding: 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th, td { padding: 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; white-space: pre-wrap; word-break: break-all; }
     th { color: var(--muted); font-size: 13px; }
     td .cell-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
@@ -322,16 +335,20 @@
 
     .admin-lock {
       position: fixed;
-      right: 10px;
-      bottom: 10px;
+      right: 6px;
+      bottom: 6px;
       z-index: 20;
-      width: 34px;
-      min-height: 34px;
+      width: 24px;
+      min-height: 24px;
+      height: 24px;
       padding: 0;
-      font-size: 15px;
-      opacity: .45;
+      font-size: 11px;
+      opacity: .25;
       border-radius: 999px;
+      display: grid;
+      place-items: center;
     }
+    .admin-lock:hover { opacity: .8; }
 
     .toast {
       position: fixed;
@@ -349,7 +366,7 @@
 
     @media (max-width: 1080px) {
       .admin-layout { grid-template-columns: 1fr; }
-      .week-grid, .kanban-grid { grid-template-columns: repeat(7, minmax(220px, 1fr)); }
+      .kanban-grid { grid-template-columns: repeat(7, minmax(220px, 1fr)); }
     }
 
     @media (max-width: 760px) {
@@ -360,23 +377,18 @@
       .segmented { width: 100%; }
       .segmented button { flex: 1; }
       .summary-strip { grid-template-columns: 1fr; }
-      .form-grid, .inline-form { grid-template-columns: 1fr; }
-      .week-grid, .kanban-grid {
-        grid-template-columns: 1fr;
-        overflow: visible;
-      }
-      .day-card, .kanban-column { min-width: 0; }
-      #calendar { min-height: 520px; }
+      .kanban-grid { grid-template-columns: 1fr; overflow: visible; }
+      .kanban-column { min-width: 0; }
+      .calendar-container { height: 550px; }
     }
   </style>
 </head>
 <body>
   <div id="app" class="app"></div>
   <script>
-    const STORAGE_KEY = 'learning-calendar-v1';
-    const VERSION = '1.0.0';
+    const STORAGE_KEY = 'learning-calendar-v3';
+    const VERSION = '1.2.0';
     const dayNames = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
-    const weekLabels = ['週一', '週二', '週三', '週四', '週五', '週六', '週日'];
     const mondayNames = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 
     const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
@@ -417,10 +429,9 @@
         fixedTasks: [],
         tempTasks: [],
         taskInstances: [],
-        verifiedTasks: {},
         settings: {
           selectedKid: '👦 哥哥',
-          viewMode: 'week',
+          viewMode: 'week', // 'week' (目前看板) 或 'month' (前台月曆)
           adminMode: 'single',
           adminKid: '👦 哥哥',
           darkMode: false
@@ -464,7 +475,6 @@
           memo: String(task.memo || ''),
           done: Boolean(task.done)
         })).filter(task => task.subject) : [];
-        data.verifiedTasks = data.verifiedTasks && typeof data.verifiedTasks === 'object' ? data.verifiedTasks : {};
         data.settings = { ...base.settings, ...(data.settings || {}) };
         if (!data.kids.includes(data.settings.selectedKid)) data.settings.selectedKid = data.kids[0];
         if (!data.kids.includes(data.settings.adminKid)) data.settings.adminKid = data.kids[0];
@@ -490,13 +500,9 @@
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
           return raw ? JSON.parse(raw) : null;
-        } catch {
-          return null;
-        }
+        } catch { return null; }
       },
-      exportJSON() {
-        return JSON.stringify(DataModel.normalize(state.db), null, 2);
-      },
+      exportJSON() { return JSON.stringify(DataModel.normalize(state.db), null, 2); },
       importJSON(jsonText) {
         const parsed = JSON.parse(jsonText);
         state.db = DataModel.normalize(parsed);
@@ -504,20 +510,11 @@
         return state.db;
       },
       exportCSV() {
-        ensureInstancesForCurrentYear();
-        const rows = [['小孩', '日期', '科目', '類型', '備註', '完成', '審核']];
-        allHistoryTasks().sort(sortTasks).forEach(task => {
-          rows.push([
-            task.kid,
-            task.date,
-            task.subject,
-            task.type === 'fixed' ? '固定' : '臨時',
-            task.memo,
-            task.done ? '已勾' : '未勾',
-            isVerified(task) ? '已審核' : '未審核'
-          ]);
+        ensureInstancesForCurrentMonth();
+        const rows = [['小孩', '日期', '科目', '備註', '狀態']];
+        allHistoryTasks().filter(t => t.done).sort(sortTasksDesc).forEach(task => {
+          rows.push([task.kid, task.date, task.subject, task.memo, '已完成']);
         });
-        this.save(state.db);
         return rows.map(row => row.map(csvCell).join(',')).join('\r\n');
       }
     };
@@ -526,7 +523,9 @@
       db: null,
       screen: 'front',
       currentWeek: startOfWeek(new Date()),
-      calendar: null
+      calendar: null,
+      frontCalendar: null,
+      undoStack: []
     };
 
     function csvCell(value) {
@@ -534,7 +533,21 @@
       return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
     }
 
-    function persist(render = true) {
+    function snapshot() {
+      if (state.undoStack.length > 20) state.undoStack.shift();
+      state.undoStack.push(JSON.stringify(state.db));
+    }
+
+    function triggerUndo() {
+      if (!state.undoStack.length) return toast('沒有上一動紀錄可以恢復');
+      const previous = state.undoStack.pop();
+      state.db = DataModel.normalize(JSON.parse(previous));
+      persist(true, false);
+      toast('已成功恢復上一動 ↩');
+    }
+
+    function persist(render = true, createSnapshot = true) {
+      if (createSnapshot) snapshot();
       state.db = DataModel.normalize(state.db);
       Repository.save(state.db);
       document.documentElement.dataset.theme = state.db.settings.darkMode ? 'dark' : 'light';
@@ -546,25 +559,24 @@
       return enabled.length ? enabled : state.db.subjects.map(subject => subject.name);
     }
 
-    function verificationKey(task) {
-      return `${task.kid}_${task.id}_${task.date}`;
-    }
-
-    function isVerified(task) {
-      return Boolean(state.db.verifiedTasks[verificationKey(task)]);
-    }
-
     function isSubjectEnabled(name) {
       return state.db.subjects.some(subject => subject.name === name && subject.enabled);
     }
 
-    function sortTasks(a, b) {
-      return a.date.localeCompare(b.date) || a.kid.localeCompare(b.kid) || a.subject.localeCompare(b.subject);
+    function sortTasksDesc(a, b) {
+      return b.date.localeCompare(a.date) || a.kid.localeCompare(b.kid) || a.subject.localeCompare(b.subject);
     }
 
+    // 嚴格限制：只在給定範圍（不超過1個月）內派發行程
     function ensureInstancesForRange(startISO, endISO) {
       const start = fromISODate(startISO);
       const end = fromISODate(endISO);
+      
+      // 安全機制：若時間差超過35天，強制切回31天內，防止產生一年數據
+      if ((end - start) / (1000 * 60 * 60 * 24) > 35) {
+        end.setTime(start.getTime() + (31 * 1000 * 60 * 60 * 24));
+      }
+
       const existing = new Set(state.db.taskInstances.map(task => `${task.sourceId}_${task.date}`));
       state.db.fixedTasks.forEach(fixed => {
         for (let cursor = new Date(start); cursor <= end; cursor.setDate(cursor.getDate() + 1)) {
@@ -588,9 +600,11 @@
       });
     }
 
-    function ensureInstancesForCurrentYear() {
-      const year = new Date().getFullYear();
-      ensureInstancesForRange(`${year}-01-01`, `${year}-12-31`);
+    function ensureInstancesForCurrentMonth() {
+      const today = new Date();
+      const firstDay = toISODate(new Date(today.getFullYear(), today.getMonth(), 1));
+      const lastDay = toISODate(new Date(today.getFullYear(), today.getMonth() + 1, 0));
+      ensureInstancesForRange(firstDay, lastDay);
     }
 
     function syncTempInstances() {
@@ -633,76 +647,132 @@
     function addKid(name) {
       const clean = name.trim();
       if (!clean || state.db.kids.includes(clean)) return toast('人物名稱重複或空白');
+      snapshot();
       state.db.kids.push(clean);
       state.db.settings.adminKid = clean;
       state.db.settings.selectedKid = clean;
-      persist();
+      persist(true, false);
+    }
+
+    function deleteKid(name) {
+      if (state.db.kids.length <= 1) return toast('至少需要保留一位成員');
+      if (!confirm(`確定要刪除「${name}」？`)) return;
+      snapshot();
+      state.db.kids = state.db.kids.filter(k => k !== name);
+      if (!state.db.kids.includes(state.db.settings.selectedKid)) state.db.settings.selectedKid = state.db.kids[0];
+      if (!state.db.kids.includes(state.db.settings.adminKid)) state.db.settings.adminKid = state.db.kids[0];
+      persist(true, false);
+      toast('成員已刪除');
     }
 
     function addSubject(name) {
       const clean = name.trim();
       if (!clean || state.db.subjects.some(subject => subject.name === clean)) return toast('科目名稱重複或空白');
+      snapshot();
       state.db.subjects.push({ name: clean, enabled: true });
-      persist();
+      persist(true, false);
+    }
+
+    function deleteSubject(name) {
+      if (!confirm(`確定刪除科目「${name}」？`)) return;
+      snapshot();
+      state.db.subjects = state.db.subjects.filter(s => s.name !== name);
+      persist(true, false);
+      toast('科目已刪除');
     }
 
     function addFixedTask(form) {
       const subject = form.subject.value;
       if (!subject) return toast('請先建立科目');
-      state.db.fixedTasks.push({
+      
+      snapshot();
+      const newFixed = {
         id: uid(),
         kid: state.db.settings.adminKid,
         subject,
         dayOfWeek: Number(form.dayOfWeek.value),
         memo: form.memo.value.trim()
-      });
+      };
+      
+      state.db.fixedTasks.push(newFixed);
+
+      const today = new Date();
+      const nextMonth = new Date();
+      nextMonth.setDate(today.getDate() + 31); // 限定派發一個月
+      
+      const existing = new Set(state.db.taskInstances.map(task => `${task.sourceId}_${task.date}`));
+      for (let cursor = new Date(today); cursor <= nextMonth; cursor.setDate(cursor.getDate() + 1)) {
+        if (cursor.getDay() !== Number(newFixed.dayOfWeek)) continue;
+        const date = toISODate(cursor);
+        const key = `${newFixed.id}_${date}`;
+        if (!existing.has(key)) {
+          state.db.taskInstances.push({
+            id: uid(),
+            sourceId: newFixed.id,
+            type: 'fixed',
+            kid: newFixed.kid,
+            subject: newFixed.subject,
+            date,
+            memo: newFixed.memo,
+            done: false
+          });
+        }
+      }
+
       form.reset();
-      persist();
+      persist(true, false);
+      toast('已新增固定行程（僅生成本月份內排程）');
     }
 
     function addTempTask({ kid, subject, date, memo }) {
       if (!subject || !date) return toast('請選擇日期與科目');
+      snapshot();
       state.db.tempTasks.push({ id: uid(), kid, subject, date, memo: memo.trim(), done: false });
       syncTempInstances();
-      persist();
-      toast('已新增臨時任務');
+      persist(true, false);
+      toast('已新增行程');
     }
 
     function updateTask(taskId, updates) {
+      snapshot();
       const temp = state.db.tempTasks.find(task => task.id === taskId);
       if (temp) Object.assign(temp, updates);
       const instance = state.db.taskInstances.find(task => task.id === taskId);
       if (instance) Object.assign(instance, updates);
-      persist();
+      persist(true, false);
     }
 
     function deleteTask(taskId) {
       const task = state.db.taskInstances.find(item => item.id === taskId) || state.db.tempTasks.find(item => item.id === taskId);
       if (!task || !confirm('確定刪除這筆任務？')) return;
-      delete state.db.verifiedTasks[verificationKey(task)];
+      snapshot();
       state.db.tempTasks = state.db.tempTasks.filter(item => item.id !== taskId);
       state.db.taskInstances = state.db.taskInstances.filter(item => item.id !== taskId);
-      persist();
+      persist(true, false);
     }
 
     function toggleDone(taskId) {
       const task = state.db.taskInstances.find(item => item.id === taskId);
-      if (!task || isVerified(task)) return;
-      task.done = !task.done;
+      if (!task) return;
+      snapshot();
+      task.done = !task.done; 
       const temp = state.db.tempTasks.find(item => item.id === taskId);
       if (temp) temp.done = task.done;
-      persist();
+      persist(true, false);
     }
 
-    function verifyTask(taskId) {
-      const task = state.db.taskInstances.find(item => item.id === taskId);
-      if (!task || !task.done) return;
-      state.db.verifiedTasks[verificationKey(task)] = true;
-      persist();
+    function deleteFixedTaskRule(ruleId) {
+      if (!confirm('確定刪除固定行程規則？未來一個月內「未完成」的此排程將一併刪除。')) return;
+      snapshot();
+      state.db.fixedTasks = state.db.fixedTasks.filter(item => item.id !== ruleId);
+      state.db.taskInstances = state.db.taskInstances.filter(item => !(item.sourceId === ruleId && !item.done));
+      persist(true, false);
+      toast('固定行程規則及未完成實例已刪除');
     }
 
     function resetThisWeek() {
-      if (!confirm('確定清除本週完成與審核狀態？任務與歷史會保留。')) return;
+      if (!confirm('確定清除本週完成狀態？')) return;
+      snapshot();
       const dates = new Set(weekDates(state.currentWeek));
       state.db.taskInstances.forEach(task => {
         if (dates.has(task.date)) task.done = false;
@@ -710,11 +780,7 @@
       state.db.tempTasks.forEach(task => {
         if (dates.has(task.date)) task.done = false;
       });
-      Object.keys(state.db.verifiedTasks).forEach(key => {
-        const task = state.db.taskInstances.find(item => verificationKey(item) === key);
-        if (task && dates.has(task.date)) delete state.db.verifiedTasks[key];
-      });
-      persist();
+      persist(true, false);
       toast('本週已重置');
     }
 
@@ -747,37 +813,21 @@
       </div>`;
     }
 
+    // 前台任務卡片：去除「固定/臨時」字樣標籤，外顯備註
     function TaskCard(task) {
-      const locked = isVerified(task);
-      const icon = task.type === 'fixed' ? '🔄' : '⭐';
-      return `<article class="task-card ${task.done ? 'done' : ''} ${locked ? 'locked' : ''}" data-component="TaskCard">
+      return `
+      <article class="task-card ${task.done ? 'done' : ''}" data-component="TaskCard">
         <div class="task-head">
-          <div>
-            <div class="task-title">${icon} ${escapeHTML(task.subject)}</div>
-            <div class="task-type">${task.type === 'fixed' ? '固定任務' : '臨時任務'}</div>
-          </div>
-          <button class="status-pill ${task.done ? 'done' : ''} ${locked ? 'locked' : ''}" data-action="toggleDone" data-task-id="${task.id}" ${locked ? 'disabled' : ''}>
-            ${locked ? '🔒 已審核' : task.done ? '完成' : '未完成'}
+          <div class="task-title">${escapeHTML(task.subject)}</div>
+          <button class="status-pill ${task.done ? 'done' : ''}" data-action="toggleDone" data-task-id="${task.id}">
+            ${task.done ? '完成' : '未完成'}
           </button>
         </div>
-        ${task.memo ? `<div class="task-memo">${escapeHTML(task.memo)}</div>` : ''}
+        ${task.memo ? `<div class="task-memo">📝 ${escapeHTML(task.memo)}</div>` : ''}
       </article>`;
     }
 
-    function WeekGrid(days) {
-      return `<section class="week-grid" data-component="WeekGrid">
-        ${days.map((day, index) => `
-          <div class="day-card card ${dateIsAllDone(day.tasks) ? 'all-done' : ''}">
-            <div class="day-title">
-              <strong>${weekLabels[index]} (${day.date})</strong>
-              <span>${day.tasks.length} 個任務</span>
-            </div>
-            ${day.tasks.length ? day.tasks.map(TaskCard).join('') : '<div class="empty">今天沒有任務</div>'}
-          </div>
-        `).join('')}
-      </section>`;
-    }
-
+    // 看板/週 模式
     function KanbanView(days) {
       return `<section class="kanban-grid" data-component="KanbanView">
         ${days.map((day, index) => `
@@ -786,10 +836,24 @@
               <strong>${mondayNames[index]}</strong>
               <span>${day.date}</span>
             </div>
-            ${day.tasks.length ? day.tasks.map(TaskCard).join('') : '<div class="empty">無卡片</div>'}
+            ${day.tasks.length ? day.tasks.map(TaskCard).join('') : '<div class="empty">無任務</div>'}
           </div>
         `).join('')}
       </section>`;
+    }
+
+    // 前台月曆視圖容器
+    function FrontCalendarView() {
+      return `
+      <div class="card panel" style="padding: 14px;">
+        <div class="day-title" style="margin-bottom: 12px;">
+          <strong>📅 月份行事曆 (整月視圖)</strong>
+          <span style="color:var(--muted)">提示：直接點擊月曆上的任務即可切換「完成狀態」</span>
+        </div>
+        <div class="calendar-container">
+          <div id="front-calendar"></div>
+        </div>
+      </div>`;
     }
 
     function FrontPage() {
@@ -797,13 +861,16 @@
       const days = tasksForWeek(kid);
       const tasks = days.flatMap(day => day.tasks);
       const done = tasks.filter(task => task.done).length;
+      const viewMode = state.db.settings.viewMode || 'week';
+
       return `
         <header class="topbar">
           <div class="brand">
             <h1>親子學習週曆</h1>
-            <span>${escapeHTML(kid)} 的本週任務</span>
+            <span>${escapeHTML(kid)} 的任務面板</span>
           </div>
           <div class="actions">
+            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
             <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
           </div>
         </header>
@@ -811,16 +878,16 @@
           <div class="toolbar">
             ${KidSelector({ selected: kid })}
             <div class="segmented">
-              <button class="${state.db.settings.viewMode === 'week' ? 'active' : ''}" data-action="setViewMode" data-mode="week">週方格模式</button>
-              <button class="${state.db.settings.viewMode === 'kanban' ? 'active' : ''}" data-action="setViewMode" data-mode="kanban">看板模式</button>
+              <button class="${viewMode === 'week' ? 'active' : ''}" data-action="setViewMode" data-mode="week">週（看板）模式</button>
+              <button class="${viewMode === 'month' ? 'active' : ''}" data-action="setViewMode" data-mode="month">月（月曆）模式</button>
             </div>
           </div>
           <section class="summary-strip">
             <div class="metric"><strong>${tasks.length}</strong><span>本週任務</span></div>
             <div class="metric"><strong>${done}</strong><span>已完成</span></div>
-            <div class="metric"><strong>${tasks.filter(isVerified).length}</strong><span>家長確認</span></div>
+            <div class="metric"><strong>${tasks.length - done}</strong><span>未完成</span></div>
           </section>
-          ${state.db.settings.viewMode === 'kanban' ? KanbanView(days) : WeekGrid(days)}
+          ${viewMode === 'month' ? FrontCalendarView() : KanbanView(days)}
         </main>
         <button class="admin-lock" title="家長後台" data-action="openAdmin">🔒</button>
       `;
@@ -834,6 +901,7 @@
             <span>目前管理：${escapeHTML(state.db.settings.adminKid)}</span>
           </div>
           <div class="actions">
+            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
             <button class="ghost" data-action="goFront">回前台</button>
             <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
           </div>
@@ -854,98 +922,125 @@
     }
 
     function AdminToolbar() {
-      return `<section class="panel card">
-        <div class="panel-head"><h2>設定</h2></div>
-        <div class="segmented">
-          <button class="${state.db.settings.adminMode === 'single' ? 'active' : ''}" data-action="setAdminMode" data-mode="single">單人模式</button>
-          <button class="${state.db.settings.adminMode === 'double' ? 'active' : ''}" data-action="setAdminMode" data-mode="double">雙人模式</button>
+      return `
+      <details class="panel-details card" open>
+        <summary class="panel-summary">⚙️ 基礎設定</summary>
+        <div class="panel-content">
+          <div class="segmented">
+            <button class="${state.db.settings.adminMode === 'single' ? 'active' : ''}" data-action="setAdminMode" data-mode="single">單人模式</button>
+            <button class="${state.db.settings.adminMode === 'multi' ? 'active' : ''}" data-action="setAdminMode" data-mode="multi">多人模式</button>
+          </div>
+          ${KidSelector({ selected: state.db.settings.adminKid, onClickName: 'selectAdminKid', compact: true })}
+          
+          <div style="margin: 6px 0 10px;">
+            <span style="font-size: 13px; font-weight: bold; color: var(--muted);">人員管理名單：</span>
+            <div class="list" style="margin-top: 6px;">
+              ${state.db.kids.map(k => `
+                <div class="list-row" style="padding: 6px 10px;">
+                  <span>${escapeHTML(k)}</span>
+                  <button class="small danger" style="padding: 2px 8px; min-height: 30px;" data-action="deleteKid" data-kid="${escapeHTML(k)}">刪除</button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <form class="inline-form" data-form="addKid">
+            <label>新增人物<input name="kid" placeholder="例如：👶 弟弟" required></label>
+            <button class="primary">新增</button>
+          </form>
+          <form class="inline-form" data-form="addSubject">
+            <label>新增科目<input name="subject" placeholder="科目名稱" required></label>
+            <button class="primary">新增</button>
+          </form>
+          <form class="inline-form" data-form="changePin">
+            <label>修改PIN<input name="pin" minlength="4" placeholder="至少4碼" required></label>
+            <button class="primary">儲存</button>
+          </form>
+          <button class="danger" data-action="resetWeek">本週重置</button>
         </div>
-        ${KidSelector({ selected: state.db.settings.adminKid, onClickName: 'selectAdminKid', compact: true })}
-        <form class="inline-form" data-form="addKid">
-          <label>新增人物<input name="kid" placeholder="例如：👶 弟弟" required></label>
-          <button class="primary">新增</button>
-        </form>
-        <form class="inline-form" data-form="addSubject">
-          <label>新增科目<input name="subject" placeholder="科目名稱" required></label>
-          <button class="primary">新增</button>
-        </form>
-        <form class="inline-form" data-form="changePin">
-          <label>修改PIN<input name="pin" minlength="4" placeholder="至少4碼" required></label>
-          <button class="primary">儲存</button>
-        </form>
-        <button class="danger" data-action="resetWeek">本週重置</button>
-      </section>`;
+      </details>`;
     }
 
     function SubjectManager() {
-      return `<section class="panel card" data-component="SubjectManager">
-        <div class="panel-head"><h2>科目管理</h2></div>
-        <div class="list">
-          ${state.db.subjects.map(subject => `
-            <div class="list-row">
-              <strong>${escapeHTML(subject.name)}</strong>
-              <div class="switch-row">
-                <button class="small ${subject.enabled ? 'primary' : ''}" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="true">啟用</button>
-                <button class="small ${!subject.enabled ? 'danger' : ''}" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="false">停用</button>
-              </div>
-            </div>`).join('')}
+      return `
+      <details class="panel-details card">
+        <summary class="panel-summary">📚 科目管理</summary>
+        <div class="panel-content">
+          <div class="list">
+            ${state.db.subjects.map(subject => `
+              <div class="list-row">
+                <strong>${escapeHTML(subject.name)}</strong>
+                <div class="switch-row">
+                  <button class="small ${subject.enabled ? 'primary' : ''}" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="true">啟用</button>
+                  <button class="small ${!subject.enabled ? 'danger' : ''}" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="false">停用</button>
+                  <button class="small danger" style="background:var(--danger);color:white;" data-action="deleteSubject" data-subject="${escapeHTML(subject.name)}">刪除</button>
+                </div>
+              </div>`).join('')}
+          </div>
         </div>
-      </section>`;
+      </details>`;
     }
 
     function FixedTaskManager() {
       const subjects = enabledSubjects();
-      const tasks = state.db.fixedTasks.filter(task => state.db.settings.adminMode === 'double' || task.kid === state.db.settings.adminKid);
-      return `<section class="panel card" data-component="FixedTaskManager">
-        <div class="panel-head"><h2>固定行程</h2></div>
-        <form class="form-grid" data-form="addFixed">
-          <label>星期
-            <select name="dayOfWeek">${[1,2,3,4,5,6,0].map(day => `<option value="${day}">${dayNames[day]}</option>`).join('')}</select>
-          </label>
-          <label>科目
-            <select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}">${escapeHTML(subject)}</option>`).join('')}</select>
-          </label>
-          <label style="grid-column: 1 / -1;">備註<input name="memo" placeholder="可留空"></label>
-          <button class="primary" style="grid-column: 1 / -1;">新增</button>
-        </form>
-        <div class="list">
-          ${tasks.length ? tasks.map(task => `
-            <div class="list-row">
-              <strong>${escapeHTML(task.kid)}｜${dayNames[task.dayOfWeek]}｜${escapeHTML(task.subject)}</strong>
-              <button class="small danger" data-action="deleteFixed" data-id="${task.id}">刪除</button>
-            </div>`).join('') : '<div class="empty">尚無固定任務</div>'}
+      const tasks = state.db.fixedTasks.filter(task => state.db.settings.adminMode === 'multi' || task.kid === state.db.settings.adminKid);
+      return `
+      <details class="panel-details card">
+        <summary class="panel-summary">🔄 固定行程</summary>
+        <div class="panel-content">
+          <form class="form-grid" data-form="addFixed">
+            <label>星期
+              <select name="dayOfWeek">${[1,2,3,4,5,6,0].map(day => `<option value="${day}">${dayNames[day]}</option>`).join('')}</select>
+            </label>
+            <label>科目
+              <select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}">${escapeHTML(subject)}</option>`).join('')}</select>
+            </label>
+            <label style="grid-column: 1 / -1;">備註<input name="memo" placeholder="右下角可縮放下方日曆高寬"></label>
+            <button class="primary" style="grid-column: 1 / -1;">新增 (僅派發本月行程)</button>
+          </form>
+          <div class="list">
+            ${tasks.length ? tasks.map(task => `
+              <div class="list-row">
+                <strong>${escapeHTML(task.kid)}｜${dayNames[task.dayOfWeek]}｜${escapeHTML(task.subject)}</strong>
+                <button class="small danger" data-action="deleteFixed" data-id="${task.id}">刪除</button>
+              </div>`).join('') : '<div class="empty">尚無固定任務</div>'}
+          </div>
         </div>
-      </section>`;
+      </details>`;
     }
 
     function CalendarManager() {
-      return `<section class="panel card" data-component="CalendarManager">
+      return `
+      <div class="panel card" data-component="CalendarManager">
         <div class="panel-head">
-          <h2>月曆區</h2>
-          <span style="color: var(--muted); font-size: 14px;">點日期新增臨時任務</span>
+          <h2>📅 月曆大視圖 (排程計畫)</h2>
+          <span style="color: var(--muted); font-size: 14px;">右下角斜線可自由拉動縮放高寬</span>
         </div>
-        <div id="calendar"></div>
-      </section>`;
+        <div class="calendar-container">
+          <div id="calendar"></div>
+        </div>
+      </div>`;
     }
 
     function HistoryTable() {
-      ensureInstancesForCurrentYear();
+      ensureInstancesForCurrentMonth();
       syncTempInstances();
-      const kids = state.db.settings.adminMode === 'double' ? state.db.kids : [state.db.settings.adminKid];
-      const tasks = allHistoryTasks().filter(task => kids.includes(task.kid)).sort(sortTasks);
+      const kids = state.db.settings.adminMode === 'multi' ? state.db.kids : [state.db.settings.adminKid];
+      const tasks = allHistoryTasks().filter(task => kids.includes(task.kid) && task.done).sort(sortTasksDesc);
       const subjects = [...new Set([...state.db.subjects.map(subject => subject.name), ...tasks.map(task => task.subject)])];
+      
       return `<section class="panel card" data-component="HistoryTable">
-        <div class="panel-head"><h2>歷史紀錄</h2></div>
+        <div class="panel-head"><h2>🗂 歷史紀錄（僅顯示已完成）</h2></div>
         <div class="admin-stack">
           ${subjects.map(subject => {
             const rows = tasks.filter(task => task.subject === subject);
-            return `<details ${rows.length ? '' : 'open'}>
-              <summary>▶ ${escapeHTML(subject)} (${rows.length})</summary>
+            return `<details class="subject-details" ${rows.length ? 'open' : ''}>
+              <summary class="subject-summary">▶ ${escapeHTML(subject)} (${rows.length} 筆已完成)</summary>
               <div class="table-wrap">
                 <table>
-                  <thead><tr><th>類型</th><th>日期</th><th>備註</th><th>完成</th><th>審核</th><th>操作</th></tr></thead>
+                  <thead><tr><th>小孩</th><th>日期</th><th>備註</th><th>完成進度</th><th>操作</th></tr></thead>
                   <tbody>
-                    ${rows.length ? rows.map(task => HistoryRow(task)).join('') : '<tr><td colspan="6">沒有紀錄</td></tr>'}
+                    ${rows.length ? rows.map(task => HistoryRow(task)).join('') : '<tr><td colspan="5" style="color: var(--muted); padding: 12px;">尚無已完成紀錄。</td></tr>'}
                   </tbody>
                 </table>
               </div>
@@ -956,30 +1051,30 @@
     }
 
     function HistoryRow(task) {
-      const locked = isVerified(task);
       return `<tr>
-        <td>${task.type === 'fixed' ? '固定' : '臨時'}<br><span style="color: var(--muted);">${escapeHTML(task.kid)}</span></td>
-        <td>${task.date}</td>
+        <td><strong>${escapeHTML(task.kid)}</strong></td>
+        <td><strong>${task.date}</strong></td>
         <td>${escapeHTML(task.memo || '—')}</td>
-        <td>${task.done ? '已勾' : '未勾'}</td>
-        <td>${locked ? '已審核 🔒' : task.done ? '可確認' : '待完成'}</td>
+        <td><span style="color:var(--good);font-weight:bold;">已勾選完成 ✅</span></td>
         <td>
           <div class="cell-actions">
-            <button class="small" data-action="editTask" data-task-id="${task.id}" ${locked ? 'disabled' : ''}>修改</button>
-            <button class="small primary" data-action="verifyTask" data-task-id="${task.id}" ${task.done && !locked ? '' : 'disabled'}>確認</button>
-            <button class="small danger" data-action="deleteTask" data-task-id="${task.id}" ${locked ? 'disabled' : ''}>刪除</button>
+            <button class="small" data-action="editTask" data-task-id="${task.id}">修改</button>
+            <button class="small danger" data-action="deleteTask" data-task-id="${task.id}">刪除</button>
           </div>
         </td>
       </tr>`;
     }
 
     function ExportManager() {
-      return `<section class="panel card" data-component="ExportManager">
-        <div class="panel-head"><h2>匯出匯入</h2></div>
-        <button class="primary" data-action="exportJSON">JSON匯出</button>
-        <label>JSON匯入<input type="file" accept="application/json,.json" data-action="importJSON"></label>
-        <button class="primary" data-action="exportCSV">CSV匯出</button>
-      </section>`;
+      return `
+      <details class="panel-details card">
+        <summary class="panel-summary">💾 備份與匯出</summary>
+        <div class="panel-content">
+          <button class="primary" data-action="exportJSON">JSON備份匯出</button>
+          <label>JSON還原匯入<input type="file" accept="application/json,.json" data-action="importJSON"></label>
+          <button class="primary" data-action="exportCSV">CSV報表匯出</button>
+        </div>
+      </details>`;
     }
 
     function TaskModal(date, task = null) {
@@ -988,7 +1083,7 @@
       const kid = task?.kid || state.db.settings.adminKid;
       return `<div class="modal-backdrop" data-modal>
         <form class="modal" data-form="${task ? 'saveTaskEdit' : 'addTemp'}">
-          <h2>${task ? '修改任務' : `新增 ${date} 任務`}</h2>
+          <h2>${task ? '修改任務內容' : `新增 ${date} 臨時任務`}</h2>
           <input type="hidden" name="taskId" value="${task?.id || ''}">
           <input type="hidden" name="date" value="${date}">
           <label>小孩
@@ -1000,50 +1095,97 @@
           <label>備註<textarea name="memo">${escapeHTML(task?.memo || '')}</textarea></label>
           <div class="actions">
             <button type="button" class="ghost" data-action="closeModal">取消</button>
-            <button class="primary">儲存</button>
+            <button class="primary">儲存變更</button>
           </div>
         </form>
       </div>`;
     }
 
+    // 渲染日曆（支援前後台雙功能）
     function renderCalendar() {
-      if (state.screen !== 'admin') return;
-      const el = document.getElementById('calendar');
-      if (!el || !window.FullCalendar) return;
-      if (state.calendar) state.calendar.destroy();
-      const kids = state.db.settings.adminMode === 'double' ? state.db.kids : [state.db.settings.adminKid];
-      const calendarEvents = () => allHistoryTasks().filter(task => kids.includes(task.kid)).map(task => ({
-        id: task.id,
-        title: `${task.kid} ${task.type === 'fixed' ? '🔄' : '⭐'} ${task.subject}${task.done ? ' ✓' : ''}`,
-        start: task.date,
-        backgroundColor: isVerified(task) ? '#b7791f' : task.done ? '#1f9d68' : '#4f7cff',
-        borderColor: 'transparent'
-      }));
-      state.calendar = new FullCalendar.Calendar(el, {
-        initialView: 'dayGridMonth',
-        locale: 'zh-tw',
-        height: 'auto',
-        firstDay: 1,
-        headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listWeek' },
-        events: calendarEvents(),
-        dateClick: info => openTaskModal(info.dateStr),
-        eventClick: info => {
-          const task = state.db.taskInstances.find(item => item.id === info.event.id);
-          if (task && !isVerified(task)) openTaskModal(task.date, task);
-        },
-        datesSet: info => {
-          const end = new Date(info.end);
-          end.setDate(end.getDate() - 1);
-          ensureInstancesForRange(info.startStr.slice(0, 10), toISODate(end));
-          syncTempInstances();
-          Repository.save(state.db);
-          if (state.calendar) {
-            state.calendar.removeAllEvents();
-            state.calendar.addEventSource(calendarEvents());
+      // 1. 後台日曆
+      if (state.screen === 'admin') {
+        const el = document.getElementById('calendar');
+        if (!el || !window.FullCalendar) return;
+        if (state.calendar) state.calendar.destroy();
+        const kids = state.db.settings.adminMode === 'multi' ? state.db.kids : [state.db.settings.adminKid];
+        
+        const getEvents = () => allHistoryTasks().filter(task => kids.includes(task.kid) && isSubjectEnabled(task.subject)).map(task => ({
+          id: task.id,
+          title: `${task.kid}: ${task.subject}${task.memo ? ' ('+task.memo+')' : ''}${task.done ? ' ✓' : ''}`,
+          start: task.date,
+          backgroundColor: task.done ? '#1f9d68' : '#4f7cff',
+          borderColor: 'transparent'
+        }));
+
+        state.calendar = new FullCalendar.Calendar(el, {
+          initialView: 'dayGridMonth',
+          locale: 'zh-tw',
+          height: '100%',
+          firstDay: 1,
+          headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listWeek' },
+          events: getEvents(),
+          dateClick: info => openTaskModal(info.dateStr),
+          eventClick: info => {
+            const task = state.db.taskInstances.find(item => item.id === info.event.id);
+            if (task) openTaskModal(task.date, task);
+          },
+          datesSet: info => {
+            const end = new Date(info.end);
+            end.setDate(end.getDate() - 1);
+            ensureInstancesForRange(info.startStr.slice(0, 10), toISODate(end));
+            syncTempInstances();
+            Repository.save(state.db);
+            if (state.calendar) {
+              state.calendar.removeAllEvents();
+              state.calendar.addEventSource(getEvents());
+            }
           }
-        }
-      });
-      state.calendar.render();
+        });
+        state.calendar.render();
+      }
+
+      // 2. 前台月份行事曆模式
+      if (state.screen === 'front' && state.db.settings.viewMode === 'month') {
+        const el = document.getElementById('front-calendar');
+        if (!el || !window.FullCalendar) return;
+        if (state.frontCalendar) state.frontCalendar.destroy();
+        const currentKid = state.db.settings.selectedKid;
+
+        const getFrontEvents = () => allHistoryTasks().filter(task => task.kid === currentKid && isSubjectEnabled(task.subject)).map(task => ({
+          id: task.id,
+          title: `${task.subject}${task.memo ? '\n📝 '+task.memo : ''}${task.done ? ' (✅已完成)' : ''}`,
+          start: task.date,
+          backgroundColor: task.done ? '#1f9d68' : '#e2e8f0',
+          textColor: task.done ? '#ffffff' : '#1e293b',
+          borderColor: task.done ? 'transparent' : '#cbd5e1'
+        }));
+
+        state.frontCalendar = new FullCalendar.Calendar(el, {
+          initialView: 'dayGridMonth',
+          locale: 'zh-tw',
+          height: '100%',
+          firstDay: 1,
+          headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth' },
+          events: getFrontEvents(),
+          eventClick: info => {
+            // 前台直接點擊月曆項目就能切換完成狀態！
+            toggleDone(info.event.id);
+          },
+          datesSet: info => {
+            const end = new Date(info.end);
+            end.setDate(end.getDate() - 1);
+            ensureInstancesForRange(info.startStr.slice(0, 10), toISODate(end));
+            syncTempInstances();
+            Repository.save(state.db);
+            if (state.frontCalendar) {
+              state.frontCalendar.removeAllEvents();
+              state.frontCalendar.addEventSource(getFrontEvents());
+            }
+          }
+        });
+        state.frontCalendar.render();
+      }
     }
 
     function renderApp() {
@@ -1060,17 +1202,18 @@
     function handleAction(target, event) {
       const action = target.dataset.action;
       if (!action) return;
+      if (action === 'undoAction') triggerUndo();
       if (action === 'selectKid') {
         state.db.settings.selectedKid = target.dataset.kid;
-        persist();
+        persist(true, false);
       }
       if (action === 'setViewMode') {
         state.db.settings.viewMode = target.dataset.mode;
-        persist();
+        persist(true, false);
       }
       if (action === 'toggleDone') toggleDone(target.dataset.taskId);
       if (action === 'openAdmin') {
-        const pin = prompt('請輸入家長PIN');
+        const pin = prompt('請輸入家長PIN碼');
         if (pin === state.db.pin) {
           state.screen = 'admin';
           renderApp();
@@ -1082,7 +1225,7 @@
       }
       if (action === 'toggleTheme') {
         state.db.settings.darkMode = !state.db.settings.darkMode;
-        persist();
+        persist(true, false);
       }
       if (action === 'setAdminMode') {
         state.db.settings.adminMode = target.dataset.mode;
@@ -1090,22 +1233,24 @@
       }
       if (action === 'selectAdminKid') {
         state.db.settings.adminKid = target.dataset.kid;
-        persist();
+        persist(true, false);
+      }
+      if (action === 'deleteKid') {
+        deleteKid(target.dataset.kid);
       }
       if (action === 'setSubject') {
+        snapshot();
         const subject = state.db.subjects.find(item => item.name === target.dataset.subject);
         if (subject) subject.enabled = target.dataset.enabled === 'true';
-        persist();
+        persist(true, false);
+      }
+      if (action === 'deleteSubject') {
+        deleteSubject(target.dataset.subject);
       }
       if (action === 'resetWeek') resetThisWeek();
       if (action === 'deleteFixed') {
-        const task = state.db.fixedTasks.find(item => item.id === target.dataset.id);
-        if (task && confirm('確定刪除固定任務？既有歷史紀錄會保留。')) {
-          state.db.fixedTasks = state.db.fixedTasks.filter(item => item.id !== task.id);
-          persist();
-        }
+        deleteFixedTaskRule(target.dataset.id);
       }
-      if (action === 'verifyTask') verifyTask(target.dataset.taskId);
       if (action === 'editTask') {
         const task = state.db.taskInstances.find(item => item.id === target.dataset.taskId);
         if (task) openTaskModal(task.date, task);
@@ -1123,9 +1268,10 @@
       if (type === 'addKid') addKid(form.kid.value);
       if (type === 'addSubject') addSubject(form.subject.value);
       if (type === 'changePin') {
+        snapshot();
         state.db.pin = form.pin.value.trim();
         form.reset();
-        persist();
+        persist(true, false);
         toast('PIN 已更新');
       }
       if (type === 'addFixed') addFixedTask(form);
@@ -1152,6 +1298,7 @@
     function importJSONFile(file) {
       if (!file) return;
       if (!confirm('此操作不可復原，確定要完全覆蓋目前資料？')) return;
+      snapshot();
       const reader = new FileReader();
       reader.onload = () => {
         try {
@@ -1159,9 +1306,7 @@
           state.screen = 'front';
           renderApp();
           toast('JSON 已匯入');
-        } catch {
-          toast('JSON 格式不正確');
-        }
+        } catch { toast('JSON 格式不正確'); }
       };
       reader.readAsText(file);
     }

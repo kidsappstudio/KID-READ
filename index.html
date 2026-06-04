@@ -88,9 +88,9 @@
     textarea { min-height: 92px; resize: vertical; }
     label { display: grid; gap: 6px; color: var(--muted); font-size: 14px; font-weight: 700; }
     h1, h2, h3 { margin: 0; line-height: 1.2; }
-    h1 { font-size: clamp(28px, 4vw, 44px); }
-    h2 { font-size: 24px; }
-    h3 { font-size: 19px; }
+    h1 { font-size: clamp(24px, 4vw, 38px); }
+    h2 { font-size: 22px; }
+    h3 { font-size: 18px; }
     .app { min-height: 100vh; }
 
     .topbar {
@@ -110,9 +110,15 @@
     .brand { display: grid; gap: 4px; }
     .brand span { color: var(--muted); font-size: 14px; }
     .actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    
     .primary { background: var(--primary); color: white; }
-    .undo-btn { background: #6b7280; color: white; font-weight: bold; }
-    .undo-btn:hover { background: #4b5563; }
+    .undo-btn { background: #4b5563; color: white; font-weight: bold; }
+    .undo-btn:hover { background: #374151; }
+    .redo-btn { background: #0d9488; color: white; font-weight: bold; }
+    .redo-btn:hover { background: #0f766e; }
+    .admin-btn { background: #8b5cf6; color: white; font-weight: bold; }
+    .admin-btn:hover { background: #7c3aed; }
+    
     .danger { background: color-mix(in srgb, var(--danger) 16%, var(--surface)); color: var(--danger); }
     .ghost { background: transparent; border: 1px solid var(--line); }
     .small { min-height: 38px; padding: 7px 10px; font-size: 14px; }
@@ -139,13 +145,13 @@
     .kid-selector, .segmented { display: flex; gap: 10px; flex-wrap: wrap; }
 
     .kid-button {
-      min-width: 150px;
-      min-height: 64px;
-      font-size: 22px;
+      min-width: 140px;
+      min-height: 58px;
+      font-size: 20px;
       font-weight: 800;
       background: var(--surface);
       border: 2px solid var(--line);
-      box-shadow: 0 8px 18px rgba(31, 41, 55, .08);
+      box-shadow: 0 6px 14px rgba(31, 41, 55, .06);
     }
 
     .kid-button.active, .segmented button.active {
@@ -162,6 +168,7 @@
     }
 
     .segmented button { min-height: 42px; }
+    
     .summary-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -170,27 +177,26 @@
     }
 
     .metric {
-      padding: 16px;
+      padding: 14px;
       display: grid;
       gap: 4px;
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
     }
-
-    .metric strong { font-size: 28px; }
+    .metric strong { font-size: 26px; }
     .metric span { color: var(--muted); font-size: 14px; }
 
     .kanban-grid {
       display: grid;
-      grid-template-columns: repeat(7, minmax(180px, 1fr));
+      grid-template-columns: repeat(7, minmax(170px, 1fr));
       gap: 14px;
       overflow-x: auto;
       padding-bottom: 8px;
     }
 
     .kanban-column {
-      min-width: 180px;
+      min-width: 170px;
       padding: 14px;
       display: grid;
       align-content: start;
@@ -223,21 +229,22 @@
 
     .task-card.done { background: var(--good-bg); border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
     .task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-    .task-title { font-weight: 900; overflow-wrap: anywhere; font-size: 18px; }
+    .task-title { font-weight: 900; overflow-wrap: anywhere; font-size: 17px; }
     .task-memo { color: var(--text); background: var(--surface-2); padding: 6px 8px; border-radius: 6px; font-size: 14px; overflow-wrap: anywhere; border-left: 3px solid var(--primary); }
+    
     .status-pill {
       min-height: 34px;
       border-radius: 999px;
       padding: 6px 10px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
       background: var(--surface-2);
     }
     .status-pill.done { color: var(--good); background: color-mix(in srgb, var(--good-bg) 80%, var(--surface)); }
 
     .admin-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
       gap: 18px;
       align-items: start;
     }
@@ -258,18 +265,18 @@
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--surface) 84%, var(--surface-2));
     }
-    .list-row strong { overflow-wrap: anywhere; }
 
-    /* 支援拉動大小的日曆外容器 */
+    /* 支援自由拉動大小的日曆外容器 - 整合優化行動端 */
     .calendar-container {
-      min-height: 600px;
-      height: 800px; 
-      padding: 10px;
+      min-height: 480px;
+      height: 720px; 
+      padding: 8px;
       resize: both; /* 允許自由拖曳右下角縮放 */
       overflow: auto; /* 必要配合屬性 */
       border: 2px dashed var(--line);
       border-radius: var(--radius);
       background: var(--surface);
+      touch-action: pan-y; /* 優化手機上滑動與拉曳手勢 */
     }
     #calendar, #front-calendar { height: 100%; min-height: 100%; }
 
@@ -279,10 +286,12 @@
       --fc-neutral-bg-color: var(--surface-2);
       --fc-list-event-hover-bg-color: var(--surface-2);
       color: var(--text);
+      font-size: 15px;
     }
     .fc .fc-button-primary { background: var(--primary); border-color: var(--primary); }
     .fc .fc-daygrid-day { cursor: pointer; }
-    .fc-event-title { white-space: pre-wrap !important; word-break: break-all !important; font-weight: bold; }
+    .fc-event { padding: 2px 4px; border-radius: 4px; margin-bottom: 2px; }
+    .fc-event-title { white-space: pre-wrap !important; word-break: break-all !important; font-weight: bold; line-height: 1.3; }
 
     details.panel-details {
       border: 1px solid var(--line);
@@ -292,14 +301,14 @@
     }
     details.panel-details summary.panel-summary {
       cursor: pointer;
-      padding: 18px;
+      padding: 16px;
       font-weight: 900;
-      font-size: 24px;
+      font-size: 22px;
       background: var(--surface-2);
       list-style: none;
     }
     details.panel-details summary.panel-summary::-webkit-details-marker { display: none; }
-    .panel-content { padding: 18px; display: grid; gap: 14px; }
+    .panel-content { padding: 16px; display: grid; gap: 14px; }
 
     details.subject-details {
       border: 1px solid var(--line);
@@ -333,23 +342,6 @@
       box-shadow: var(--shadow);
     }
 
-    .admin-lock {
-      position: fixed;
-      right: 6px;
-      bottom: 6px;
-      z-index: 20;
-      width: 24px;
-      min-height: 24px;
-      height: 24px;
-      padding: 0;
-      font-size: 11px;
-      opacity: .25;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-    }
-    .admin-lock:hover { opacity: .8; }
-
     .toast {
       position: fixed;
       left: 50%;
@@ -364,22 +356,32 @@
       font-weight: 800;
     }
 
+    /* 行動裝置介面特調：極致優化手機版月曆格子大小與外觀 */
     @media (max-width: 1080px) {
       .admin-layout { grid-template-columns: 1fr; }
-      .kanban-grid { grid-template-columns: repeat(7, minmax(220px, 1fr)); }
+      .kanban-grid { grid-template-columns: repeat(7, minmax(200px, 1fr)); }
     }
 
     @media (max-width: 760px) {
       body { font-size: 16px; }
-      .topbar { align-items: flex-start; flex-direction: column; }
-      .actions { width: 100%; }
-      .kid-button { flex: 1 1 100%; }
+      .topbar { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .actions { width: 100%; justify-content: flex-start; }
+      .kid-button { flex: 1 1 auto; min-width: 120px; min-height: 52px; font-size: 18px; }
       .segmented { width: 100%; }
       .segmented button { flex: 1; }
       .summary-strip { grid-template-columns: 1fr; }
       .kanban-grid { grid-template-columns: 1fr; overflow: visible; }
       .kanban-column { min-width: 0; }
-      .calendar-container { height: 550px; }
+      
+      /* 手機板日曆基礎高度自適應調整，格子更易於看清 */
+      .calendar-container { 
+        height: 520px; 
+        min-height: 400px; 
+        padding: 4px;
+      }
+      .fc { font-size: 12px; }
+      .fc .fc-toolbar { flex-direction: column; gap: 6px; }
+      .fc-event-title { font-size: 11px; }
     }
   </style>
 </head>
@@ -387,18 +389,20 @@
   <div id="app" class="app"></div>
   <script>
     const STORAGE_KEY = 'learning-calendar-v3';
-    const VERSION = '1.2.0';
+    const VERSION = '1.3.0';
     const dayNames = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
     const mondayNames = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 
     const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
     const pad = value => String(value).padStart(2, '0');
     const toISODate = date => `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+    
     const fromISODate = iso => {
       const [year, month, day] = iso.split('-').map(Number);
       return new Date(year, month - 1, day);
     };
     const todayISO = () => toISODate(new Date());
+    
     const startOfWeek = date => {
       const copy = new Date(date);
       const day = copy.getDay();
@@ -407,11 +411,13 @@
       copy.setHours(0, 0, 0, 0);
       return copy;
     };
+    
     const weekDates = (base = new Date()) => Array.from({ length: 7 }, (_, index) => {
       const date = startOfWeek(base);
       date.setDate(date.getDate() + index);
       return toISODate(date);
     });
+
     const escapeHTML = text => String(text ?? '').replace(/[&<>"']/g, char => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
     })[char]);
@@ -431,7 +437,7 @@
         taskInstances: [],
         settings: {
           selectedKid: '👦 哥哥',
-          viewMode: 'week', // 'week' (目前看板) 或 'month' (前台月曆)
+          viewMode: 'week', 
           adminMode: 'single',
           adminKid: '👦 哥哥',
           darkMode: false
@@ -519,13 +525,15 @@
       }
     };
 
+    // 支援 復原(Undo) 與 取消復原/重做(Redo) 的雙重狀態管理
     const state = {
       db: null,
       screen: 'front',
       currentWeek: startOfWeek(new Date()),
       calendar: null,
       frontCalendar: null,
-      undoStack: []
+      undoStack: [],
+      redoStack: []
     };
 
     function csvCell(value) {
@@ -534,16 +542,27 @@
     }
 
     function snapshot() {
-      if (state.undoStack.length > 20) state.undoStack.shift();
+      if (state.undoStack.length > 25) state.undoStack.shift();
       state.undoStack.push(JSON.stringify(state.db));
+      state.redoStack = []; // 有新改動時，清空取消復原棧
     }
 
     function triggerUndo() {
       if (!state.undoStack.length) return toast('沒有上一動紀錄可以恢復');
+      state.redoStack.push(JSON.stringify(state.db)); // 將目前狀態丟入重做
       const previous = state.undoStack.pop();
       state.db = DataModel.normalize(JSON.parse(previous));
       persist(true, false);
       toast('已成功恢復上一動 ↩');
+    }
+
+    function triggerRedo() {
+      if (!state.redoStack.length) return toast('沒有可以取消復原的動作');
+      state.undoStack.push(JSON.stringify(state.db)); // 將目前狀態丟回復原
+      const nextState = state.redoStack.pop();
+      state.db = DataModel.normalize(JSON.parse(nextState));
+      persist(true, false);
+      toast('已取消復原 (重做成功) ↪');
     }
 
     function persist(render = true, createSnapshot = true) {
@@ -567,35 +586,43 @@
       return b.date.localeCompare(a.date) || a.kid.localeCompare(b.kid) || a.subject.localeCompare(b.subject);
     }
 
-    // 嚴格限制：只在給定範圍（不超過1個月）內派發行程
+    // 核心安全鎖：限制任何固定行程的自動生成「僅在指定的該月份之內」
     function ensureInstancesForRange(startISO, endISO) {
-      const start = fromISODate(startISO);
-      const end = fromISODate(endISO);
+      // 根據傳入的時間判斷當前使用者在看哪個月
+      const pivotDate = fromISODate(startISO);
+      pivotDate.setDate(pivotDate.getDate() + 10); // 往後移10天穩固落在目標月份內
       
-      // 安全機制：若時間差超過35天，強制切回31天內，防止產生一年數據
-      if ((end - start) / (1000 * 60 * 60 * 24) > 35) {
-        end.setTime(start.getTime() + (31 * 1000 * 60 * 60 * 24));
-      }
+      // 算出該月份的絕對起迄範圍 (嚴格限制本月 1 號到當月最後一天)
+      const year = pivotDate.getFullYear();
+      const month = pivotDate.getMonth();
+      const firstDayOfMonth = new Date(year, month, 1);
+      const lastDayOfMonth = new Date(year, month + 1, 0);
+
+      const mStartISO = toISODate(firstDayOfMonth);
+      const mEndISO = toISODate(lastDayOfMonth);
 
       const existing = new Set(state.db.taskInstances.map(task => `${task.sourceId}_${task.date}`));
       state.db.fixedTasks.forEach(fixed => {
-        for (let cursor = new Date(start); cursor <= end; cursor.setDate(cursor.getDate() + 1)) {
-          if (cursor.getDay() !== Number(fixed.dayOfWeek)) continue;
-          const date = toISODate(cursor);
-          const key = `${fixed.id}_${date}`;
-          if (!existing.has(key)) {
-            state.db.taskInstances.push({
-              id: uid(),
-              sourceId: fixed.id,
-              type: 'fixed',
-              kid: fixed.kid,
-              subject: fixed.subject,
-              date,
-              memo: fixed.memo,
-              done: false
-            });
-            existing.add(key);
+        let cursor = new Date(firstDayOfMonth);
+        while (cursor <= lastDayOfMonth) {
+          if (cursor.getDay() === Number(fixed.dayOfWeek)) {
+            const date = toISODate(cursor);
+            const key = `${fixed.id}_${date}`;
+            if (!existing.has(key)) {
+              state.db.taskInstances.push({
+                id: uid(),
+                sourceId: fixed.id,
+                type: 'fixed',
+                kid: fixed.kid,
+                subject: fixed.subject,
+                date,
+                memo: fixed.memo,
+                done: false
+              });
+              existing.add(key);
+            }
           }
+          cursor.setDate(cursor.getDate() + 1);
         }
       });
     }
@@ -693,35 +720,15 @@
         dayOfWeek: Number(form.dayOfWeek.value),
         memo: form.memo.value.trim()
       };
-      
       state.db.fixedTasks.push(newFixed);
 
+      // 現抓現派：限定僅填補本月剩餘或該月排程
       const today = new Date();
-      const nextMonth = new Date();
-      nextMonth.setDate(today.getDate() + 31); // 限定派發一個月
-      
-      const existing = new Set(state.db.taskInstances.map(task => `${task.sourceId}_${task.date}`));
-      for (let cursor = new Date(today); cursor <= nextMonth; cursor.setDate(cursor.getDate() + 1)) {
-        if (cursor.getDay() !== Number(newFixed.dayOfWeek)) continue;
-        const date = toISODate(cursor);
-        const key = `${newFixed.id}_${date}`;
-        if (!existing.has(key)) {
-          state.db.taskInstances.push({
-            id: uid(),
-            sourceId: newFixed.id,
-            type: 'fixed',
-            kid: newFixed.kid,
-            subject: newFixed.subject,
-            date,
-            memo: newFixed.memo,
-            done: false
-          });
-        }
-      }
+      ensureInstancesForRange(toISODate(today), toISODate(today));
 
       form.reset();
       persist(true, false);
-      toast('已新增固定行程（僅生成本月份內排程）');
+      toast('已新增固定行程（生成限制：僅限本月份內）');
     }
 
     function addTempTask({ kid, subject, date, memo }) {
@@ -762,12 +769,12 @@
     }
 
     function deleteFixedTaskRule(ruleId) {
-      if (!confirm('確定刪除固定行程規則？未來一個月內「未完成」的此排程將一併刪除。')) return;
+      if (!confirm('確定刪除固定行程規則？目前產生的相關排程將一併刪除。')) return;
       snapshot();
       state.db.fixedTasks = state.db.fixedTasks.filter(item => item.id !== ruleId);
       state.db.taskInstances = state.db.taskInstances.filter(item => !(item.sourceId === ruleId && !item.done));
       persist(true, false);
-      toast('固定行程規則及未完成實例已刪除');
+      toast('固定行程規則已刪除');
     }
 
     function resetThisWeek() {
@@ -813,7 +820,6 @@
       </div>`;
     }
 
-    // 前台任務卡片：去除「固定/臨時」字樣標籤，外顯備註
     function TaskCard(task) {
       return `
       <article class="task-card ${task.done ? 'done' : ''}" data-component="TaskCard">
@@ -827,7 +833,6 @@
       </article>`;
     }
 
-    // 看板/週 模式
     function KanbanView(days) {
       return `<section class="kanban-grid" data-component="KanbanView">
         ${days.map((day, index) => `
@@ -842,18 +847,38 @@
       </section>`;
     }
 
-    // 前台月曆視圖容器
     function FrontCalendarView() {
       return `
       <div class="card panel" style="padding: 14px;">
         <div class="day-title" style="margin-bottom: 12px;">
           <strong>📅 月份行事曆 (整月視圖)</strong>
-          <span style="color:var(--muted)">提示：直接點擊月曆上的任務即可切換「完成狀態」</span>
+          <span style="color:var(--muted)">提示：直接點擊月曆項目就能切換「完成狀態」</span>
         </div>
         <div class="calendar-container">
           <div id="front-calendar"></div>
         </div>
       </div>`;
+    }
+
+    // 整合最上排 Topbar 控制元件：復原、取消復原、前後台模式一條龍排列
+    function GlobalHeader(title, subtitle, isFront = true) {
+      return `
+        <header class="topbar">
+          <div class="brand">
+            <h1>${title}</h1>
+            <span>${subtitle}</span>
+          </div>
+          <div class="actions">
+            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
+            ${state.redoStack.length ? `<button class="redo-btn" data-action="redoAction">↪ 取消復原(恢復前)</button>` : ''}
+            <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
+            ${isFront ? 
+              `<button class="admin-btn" data-action="openAdmin">🛠 進入後台</button>` : 
+              `<button class="primary" style="background:#059669;" data-action="goFront">回前台首頁</button>`
+            }
+          </div>
+        </header>
+      `;
     }
 
     function FrontPage() {
@@ -864,16 +889,7 @@
       const viewMode = state.db.settings.viewMode || 'week';
 
       return `
-        <header class="topbar">
-          <div class="brand">
-            <h1>親子學習週曆</h1>
-            <span>${escapeHTML(kid)} 的任務面板</span>
-          </div>
-          <div class="actions">
-            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
-            <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
-          </div>
-        </header>
+        ${GlobalHeader('親子學習週曆', `${escapeHTML(kid)} 的任務面板`, true)}
         <main class="container">
           <div class="toolbar">
             ${KidSelector({ selected: kid })}
@@ -889,23 +905,12 @@
           </section>
           ${viewMode === 'month' ? FrontCalendarView() : KanbanView(days)}
         </main>
-        <button class="admin-lock" title="家長後台" data-action="openAdmin">🔒</button>
       `;
     }
 
     function AdminPanel() {
       return `
-        <header class="topbar">
-          <div class="brand">
-            <h1>家長後台</h1>
-            <span>目前管理：${escapeHTML(state.db.settings.adminKid)}</span>
-          </div>
-          <div class="actions">
-            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
-            <button class="ghost" data-action="goFront">回前台</button>
-            <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
-          </div>
-        </header>
+        ${GlobalHeader('家長管理後台', `目前管理：${escapeHTML(state.db.settings.adminKid)}`, false)}
         <main class="container admin-layout" data-component="AdminPanel">
           <aside class="admin-stack">
             ${AdminToolbar()}
@@ -995,8 +1000,8 @@
             <label>科目
               <select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}">${escapeHTML(subject)}</option>`).join('')}</select>
             </label>
-            <label style="grid-column: 1 / -1;">備註<input name="memo" placeholder="右下角可縮放下方日曆高寬"></label>
-            <button class="primary" style="grid-column: 1 / -1;">新增 (僅派發本月行程)</button>
+            <label style="grid-column: 1 / -1;">備註<input name="memo" placeholder="例如：第3-5頁"></label>
+            <button class="primary" style="grid-column: 1 / -1;">新增 (限當月份內生成)</button>
           </form>
           <div class="list">
             ${tasks.length ? tasks.map(task => `
@@ -1014,7 +1019,7 @@
       <div class="panel card" data-component="CalendarManager">
         <div class="panel-head">
           <h2>📅 月曆大視圖 (排程計畫)</h2>
-          <span style="color: var(--muted); font-size: 14px;">右下角斜線可自由拉動縮放高寬</span>
+          <span style="color: var(--muted); font-size: 13px;">右下角斜線可自由拉動縮放高寬</span>
         </div>
         <div class="calendar-container">
           <div id="calendar"></div>
@@ -1101,9 +1106,8 @@
       </div>`;
     }
 
-    // 渲染日曆（支援前後台雙功能）
     function renderCalendar() {
-      // 1. 後台日曆
+      // 1. 後台大月曆
       if (state.screen === 'admin') {
         const el = document.getElementById('calendar');
         if (!el || !window.FullCalendar) return;
@@ -1123,6 +1127,7 @@
           locale: 'zh-tw',
           height: '100%',
           firstDay: 1,
+          fixedWeekCount: false, // 關閉固定6週：依據本月天數動態調整週數，更精簡！
           headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listWeek' },
           events: getEvents(),
           dateClick: info => openTaskModal(info.dateStr),
@@ -1145,7 +1150,7 @@
         state.calendar.render();
       }
 
-      // 2. 前台月份行事曆模式
+      // 2. 前台動態月曆模式
       if (state.screen === 'front' && state.db.settings.viewMode === 'month') {
         const el = document.getElementById('front-calendar');
         if (!el || !window.FullCalendar) return;
@@ -1154,7 +1159,7 @@
 
         const getFrontEvents = () => allHistoryTasks().filter(task => task.kid === currentKid && isSubjectEnabled(task.subject)).map(task => ({
           id: task.id,
-          title: `${task.subject}${task.memo ? '\n📝 '+task.memo : ''}${task.done ? ' (✅已完成)' : ''}`,
+          title: `${task.subject}${task.memo ? '\n📝 '+task.memo : ''}${task.done ? ' (✅完成)' : ''}`,
           start: task.date,
           backgroundColor: task.done ? '#1f9d68' : '#e2e8f0',
           textColor: task.done ? '#ffffff' : '#1e293b',
@@ -1166,10 +1171,10 @@
           locale: 'zh-tw',
           height: '100%',
           firstDay: 1,
+          fixedWeekCount: false, // 只顯示本月份對應的實體週數範圍
           headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth' },
           events: getFrontEvents(),
           eventClick: info => {
-            // 前台直接點擊月曆項目就能切換完成狀態！
             toggleDone(info.event.id);
           },
           datesSet: info => {
@@ -1203,6 +1208,7 @@
       const action = target.dataset.action;
       if (!action) return;
       if (action === 'undoAction') triggerUndo();
+      if (action === 'redoAction') triggerRedo();
       if (action === 'selectKid') {
         state.db.settings.selectedKid = target.dataset.kid;
         persist(true, false);

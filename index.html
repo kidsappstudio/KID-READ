@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
@@ -25,7 +25,7 @@
       --shadow: 0 12px 28px rgba(31, 41, 55, .12);
       --radius: 16px;
       --radius-sm: 12px;
-      --tap: 48px;
+      --tap: 44px;
     }
 
     [data-theme="dark"] {
@@ -52,8 +52,8 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-size: 17px;
-      line-height: 1.45;
+      font-size: 16px;
+      line-height: 1.4;
     }
 
     button, input, select, textarea { font: inherit; }
@@ -62,7 +62,7 @@
       min-height: var(--tap);
       border: 0;
       border-radius: var(--radius-sm);
-      padding: 10px 16px;
+      padding: 8px 14px;
       color: var(--text);
       background: var(--surface-2);
       cursor: pointer;
@@ -80,17 +80,17 @@
       min-height: var(--tap);
       border: 1px solid var(--line);
       border-radius: var(--radius-sm);
-      padding: 10px 12px;
+      padding: 8px 12px;
       color: var(--text);
       background: var(--surface);
     }
 
     textarea { min-height: 92px; resize: vertical; }
-    label { display: grid; gap: 6px; color: var(--muted); font-size: 14px; font-weight: 700; }
+    label { display: grid; gap: 4px; color: var(--muted); font-size: 13px; font-weight: 700; }
     h1, h2, h3 { margin: 0; line-height: 1.2; }
-    h1 { font-size: clamp(24px, 4vw, 38px); }
-    h2 { font-size: 22px; }
-    h3 { font-size: 18px; }
+    h1 { font-size: clamp(22px, 4vw, 34px); }
+    h2 { font-size: 20px; }
+    h3 { font-size: 17px; }
     .app { min-height: 100vh; }
 
     .topbar {
@@ -101,29 +101,26 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 16px clamp(16px, 3vw, 32px);
+      padding: 12px clamp(14px, 3vw, 24px);
       background: color-mix(in srgb, var(--bg) 88%, transparent);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--line);
     }
 
-    .brand { display: grid; gap: 4px; }
-    .brand span { color: var(--muted); font-size: 14px; }
-    .actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .brand { display: grid; gap: 2px; }
+    .brand span { color: var(--muted); font-size: 13px; }
+    .actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
     
     .primary { background: var(--primary); color: white; }
     .undo-btn { background: #4b5563; color: white; font-weight: bold; }
-    .undo-btn:hover { background: #374151; }
     .redo-btn { background: #0d9488; color: white; font-weight: bold; }
-    .redo-btn:hover { background: #0f766e; }
     .admin-btn { background: #8b5cf6; color: white; font-weight: bold; }
-    .admin-btn:hover { background: #7c3aed; }
     
     .danger { background: color-mix(in srgb, var(--danger) 16%, var(--surface)); color: var(--danger); }
     .ghost { background: transparent; border: 1px solid var(--line); }
-    .small { min-height: 38px; padding: 7px 10px; font-size: 14px; }
-    .icon-btn { width: 48px; padding: 0; display: inline-grid; place-items: center; }
-    .container { max-width: 1440px; margin: 0 auto; padding: 22px clamp(14px, 3vw, 32px) 80px; }
+    .small { min-height: 34px; padding: 4px 10px; font-size: 13px; border-radius: 6px; }
+    .icon-btn { width: 44px; padding: 0; display: inline-grid; place-items: center; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 16px clamp(12px, 3vw, 24px) 80px; }
     .hidden { display: none !important; }
 
     .card {
@@ -136,22 +133,21 @@
     .toolbar {
       display: flex;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
     }
 
-    .kid-selector, .segmented { display: flex; gap: 10px; flex-wrap: wrap; }
+    .kid-selector, .segmented { display: flex; gap: 8px; flex-wrap: wrap; }
 
     .kid-button {
-      min-width: 140px;
-      min-height: 58px;
-      font-size: 20px;
+      min-width: 120px;
+      min-height: 50px;
+      font-size: 18px;
       font-weight: 800;
       background: var(--surface);
       border: 2px solid var(--line);
-      box-shadow: 0 6px 14px rgba(31, 41, 55, .06);
     }
 
     .kid-button.active, .segmented button.active {
@@ -161,48 +157,46 @@
     }
 
     .segmented {
-      padding: 6px;
+      padding: 4px;
       border: 1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 12px;
       background: var(--surface);
     }
 
-    .segmented button { min-height: 42px; }
+    .segmented button { min-height: 36px; }
     
     .summary-strip {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin: 0 0 18px;
+      margin: 0 0 14px;
     }
 
     .metric {
-      padding: 14px;
+      padding: 12px;
       display: grid;
-      gap: 4px;
+      gap: 2px;
       background: var(--surface);
       border: 1px solid var(--line);
       border-radius: var(--radius);
     }
-    .metric strong { font-size: 26px; }
-    .metric span { color: var(--muted); font-size: 14px; }
+    .metric strong { font-size: 24px; }
+    .metric span { color: var(--muted); font-size: 13px; }
 
     .kanban-grid {
       display: grid;
-      grid-template-columns: repeat(7, minmax(170px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(7, minmax(160px, 1fr));
+      gap: 12px;
       overflow-x: auto;
       padding-bottom: 8px;
     }
 
     .kanban-column {
-      min-width: 170px;
-      padding: 14px;
+      min-width: 160px;
+      padding: 12px;
       display: grid;
       align-content: start;
-      gap: 12px;
-      white-space: pre-wrap;
-      word-break: break-all;
+      gap: 10px;
     }
 
     .kanban-column.all-done {
@@ -210,103 +204,95 @@
       border-color: color-mix(in srgb, var(--good) 45%, var(--line));
     }
 
-    .day-title { display: grid; gap: 4px; margin-bottom: 6px; }
-    .day-title strong { font-size: 18px; }
-    .day-title span { color: var(--muted); font-size: 13px; }
-    .empty { color: var(--muted); font-size: 14px; padding: 12px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
+    .day-title { display: grid; gap: 2px; margin-bottom: 4px; }
+    .day-title strong { font-size: 16px; }
+    .day-title span { color: var(--muted); font-size: 12px; }
+    .empty { color: var(--muted); font-size: 13px; padding: 10px; border: 1px dashed var(--line); border-radius: var(--radius-sm); }
 
     .task-card {
       display: grid;
-      gap: 6px;
-      padding: 12px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--line);
-      background: var(--surface);
-      box-shadow: 0 5px 14px rgba(31, 41, 55, .08);
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-
-    .task-card.done { background: var(--good-bg); border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
-    .task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
-    .task-title { font-weight: 900; overflow-wrap: anywhere; font-size: 17px; }
-    .task-memo { color: var(--text); background: var(--surface-2); padding: 6px 8px; border-radius: 6px; font-size: 14px; overflow-wrap: anywhere; border-left: 3px solid var(--primary); }
-    
-    .status-pill {
-      min-height: 34px;
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-weight: 800;
-      font-size: 13px;
-      background: var(--surface-2);
-    }
-    .status-pill.done { color: var(--good); background: color-mix(in srgb, var(--good-bg) 80%, var(--surface)); }
-
-    .admin-layout {
-      display: grid;
-      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
-
-    .admin-stack { display: grid; gap: 16px; }
-    .panel { padding: 18px; display: grid; gap: 14px; }
-    .panel-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; align-items: end; }
-    .inline-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: end; }
-    .list { display: grid; gap: 10px; }
-    .list-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
+      gap: 4px;
       padding: 10px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--surface) 84%, var(--surface-2));
+      background: var(--surface);
     }
 
+    .task-card.done { background: var(--good-bg); border-color: color-mix(in srgb, var(--good) 45%, var(--line)); }
+    .task-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .task-title { font-weight: 900; font-size: 16px; }
+    .task-memo { color: var(--text); background: var(--surface-2); padding: 4px 6px; border-radius: 6px; font-size: 13px; border-left: 3px solid var(--primary); }
+    
+    .status-pill {
+      min-height: 30px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-weight: 800;
+      font-size: 12px;
+    }
+    .status-pill.done { color: var(--good); background: color-mix(in srgb, var(--good-bg) 80%, var(--surface)); }
+
+    /* 後台排版佈局 */
+    .admin-layout {
+      display: grid;
+      grid-template-columns: minmax(290px, 360px) minmax(0, 1fr);
+      gap: 14px;
+    }
+
+    .admin-stack { display: grid; gap: 12px; }
+    .panel { padding: 14px; display: grid; gap: 10px; }
+    .panel-head { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+    
+    /* 緊湊型設定表單樣式 */
+    .compact-form-group {
+      display: grid;
+      gap: 8px;
+      background: var(--surface-2);
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed var(--line);
+    }
+    .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; align-items: end; }
+    .inline-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; align-items: end; }
+    
+    .list { display: grid; gap: 8px; }
+    .list-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    /* 限制特定按鈕觸發拖曳排序 */
+    .drag-handle {
+      cursor: grab;
+      padding: 2px 6px;
+      background: var(--surface-2);
+      border-radius: 4px;
+      font-weight: bold;
+      user-select: none;
+    }
+    .drag-handle:active { cursor: grabbing; }
+    .list-row.dragging { opacity: 0.4; background: var(--primary-2); border: 2px dashed var(--primary); }
+
     .calendar-container {
-      min-height: 480px;
-      height: 720px; 
-      padding: 8px;
+      min-height: 400px;
+      height: 640px; 
+      padding: 6px;
       resize: both; 
       overflow: auto; 
       border: 2px dashed var(--line);
       border-radius: var(--radius);
       background: var(--surface);
-      touch-action: pan-y; 
     }
     #calendar, #front-calendar { height: 100%; min-height: 100%; }
 
-    .fc {
-      --fc-border-color: var(--line);
-      --fc-page-bg-color: var(--surface);
-      --fc-neutral-bg-color: var(--surface-2);
-      --fc-list-event-hover-bg-color: var(--surface-2);
-      color: var(--text);
-      font-size: 15px;
-    }
-    .fc .fc-button-primary { background: var(--primary); border-color: var(--primary); }
-    .fc .fc-daygrid-day { cursor: pointer; }
-    .fc-event { padding: 2px 4px; border-radius: 4px; margin-bottom: 2px; }
-    .fc-event-title { white-space: pre-wrap !important; word-break: break-all !important; font-weight: bold; line-height: 1.3; }
-
-    .fc .fc-button .fc-icon {
-      font-size: 26px !important;
-    }
-    .fc .fc-button {
-      padding: 8px 16px !important;
-      min-height: 44px !important;
-    }
-
-    #liveClock {
-      font-size: 15px;
-      font-weight: bold;
-      color: var(--primary);
-      margin-top: 4px;
-      width: 100%;
-    }
+    .fc { font-size: 14px; }
+    .fc .fc-button { min-height: 38px !important; padding: 4px 10px !important; }
 
     details.panel-details {
       border: 1px solid var(--line);
@@ -316,88 +302,138 @@
     }
     details.panel-details summary.panel-summary {
       cursor: pointer;
-      padding: 16px;
+      padding: 12px 14px;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 18px;
       background: var(--surface-2);
       list-style: none;
     }
-    details.panel-details summary.panel-summary::-webkit-details-marker { display: none; }
-    .panel-content { padding: 16px; display: grid; gap: 14px; }
+    .panel-content { padding: 12px; display: grid; gap: 10px; }
 
-    details.subject-details {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
-      overflow: hidden;
+    /* 置物櫃樣式 */
+    .history-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 12px;
+      border: 2px dashed transparent;
+      border-radius: var(--radius-sm);
+      transition: background 0.2s, border-color 0.2s;
+      min-height: 200px;
     }
-    summary.subject-summary { cursor: pointer; padding: 14px 16px; font-weight: 900; background: var(--surface-2); }
     
-    /* EXCEL 工整風格表格樣式 */
-    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
-    table { width: 100%; border-collapse: collapse; min-width: 720px; background: var(--surface); }
-    th, td { padding: 6px 10px; border: 1px solid var(--line); text-align: left; vertical-align: middle; }
-    th { background: var(--surface-2); color: var(--muted); font-size: 13px; font-weight: bold; }
-    td { font-size: 14px; }
-    .cell-actions { display: flex; gap: 4px; flex-wrap: nowrap; }
-    .cell-actions button { min-height: 28px !important; padding: 2px 8px !important; font-size: 13px; border-radius: 4px; }
+    .history-flex.drag-container-over {
+      background: color-mix(in srgb, var(--primary) 5%, transparent);
+      border-color: var(--primary);
+    }
 
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
+    .book-card {
+      width: 130px;
+      height: 165px;
+      border-radius: 4px 10px 10px 4px;
+      padding: 12px 10px;
+      background: #f1f5f9; 
+      border: 1px solid #cbd5e1;
+      border-left: 9px solid #94a3b8; 
+      color: #334155;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: grab;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.04);
+      user-select: none;
+      position: relative;
+    }
+    [data-theme="dark"] .book-card { background: #334155; border: 1px solid #475569; border-left-color: #64748b; color: #f1f5f9; }
+    .book-card:hover { transform: translateY(-2px); background: #e2e8f0; }
+    .book-card.active { border: 2px solid var(--primary); opacity: 0.6; }
+    
+    .book-card.folder-type.drag-over {
+      background: var(--primary-2) !important;
+      border: 2px dashed var(--primary) !important;
+      transform: scale(1.04);
+    }
+
+    /* 🎨 優化：打開/未打開資料夾卡片與內部書本變黯淡、稍有不同 */
+    .book-card.folder-type { background: #e2e8f0; border-left: 9px solid #cbd5e1; border-color: #bfa3cd; }
+    [data-theme="dark"] .book-card.folder-type { background: #1e293b; border-left-color: #475569; }
+    
+    /* 打開狀態：外層更深邃 */
+    .book-card.folder-type.folder-open { background: #cbd5e1; border-left-color: #94a3b8; }
+    [data-theme="dark"] .book-card.folder-type.folder-open { background: #111827; }
+
+    /* 內層子書籍：顯著調暗，避免死白 */
+    .book-card.is-child { border-left: 7px solid #78889b; background: #e2e8f0; border-color: #b4c2d3; color: #475569; }
+    [data-theme="dark"] .book-card.is-child { background: #1f2937; color: #cbd5e1; }
+    .book-card.is-child::before {
+      content: "📂"; position: absolute; top: 4px; right: 6px; font-size: 11px; opacity: 0.4;
+    }
+
+    /* 資料夾刪除小按鈕 */
+    .folder-delete-btn {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 22px;
+      height: 22px;
+      min-height: 22px;
+      padding: 0;
+      font-size: 11px;
       display: grid;
       place-items: center;
-      padding: 18px;
-      background: rgba(15, 23, 42, .55);
+      background: rgba(214, 69, 69, 0.15);
+      color: var(--danger);
+      border-radius: 4px;
+      z-index: 5;
     }
-    .modal {
-      width: min(520px, 100%);
-      padding: 20px;
-      display: grid;
-      gap: 14px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+    .folder-delete-btn:hover { background: var(--danger); color: white; transform: none; }
+
+    /* 樹狀結構階層指示線（選填視覺） */
+    .tree-node-title {
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--surface-2);
+      padding: 2px 4px;
+      border-radius: 4px;
+      word-break: break-all;
+      margin-bottom: 4px;
     }
 
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      z-index: 80;
-      transform: translateX(-50%);
-      padding: 12px 16px;
-      border-radius: 999px;
-      color: white;
-      background: #1f2937;
-      box-shadow: var(--shadow);
-      font-weight: 800;
+    .bookshelf-divider { width: 100%; height: 2px; background: var(--line); margin: 6px 0; display: block; }
+    .bookshelf-section-title { width: 100%; font-size: 13px; font-weight: bold; color: var(--muted); margin: 6px 4px 2px; }
+
+    .book-title {
+      font-weight: 800; font-size: 14px; line-height: 1.3;
+      display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+      overflow: hidden; text-overflow: ellipsis; word-break: break-all;
     }
+    .book-count {
+      font-size: 11px; font-weight: bold; background: rgba(0, 0, 0, 0.06); color: #475569;
+      padding: 2px 4px; border-radius: 4px; align-self: flex-start;
+    }
+    [data-theme="dark"] .book-count { background: rgba(255, 255, 255, 0.1); color: #cbd5e1; }
+
+    .table-drawer-bottom {
+      width: 100%; margin-top: 14px; background: var(--surface);
+      border-radius: var(--radius); border: 1px solid var(--line); padding: 14px;
+    }
+    
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 6px 8px; border: 1px solid var(--line); text-align: left; }
+    th { background: var(--surface-2); color: var(--muted); font-size: 13px; }
+    td { font-size: 14px; }
+
+    .modal-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px; background: rgba(15, 23, 42, .55); }
+    .modal { width: min(480px, 100%); padding: 18px; display: grid; gap: 12px; background: var(--surface); border-radius: var(--radius); }
+    .toast { position: fixed; left: 50%; bottom: 18px; z-index: 80; transform: translateX(-50%); padding: 10px 14px; border-radius: 999px; color: white; background: #1f2937; font-weight: 800; font-size: 15px; }
 
     @media (max-width: 1080px) {
       .admin-layout { grid-template-columns: 1fr; }
-      .kanban-grid { grid-template-columns: repeat(7, minmax(200px, 1fr)); }
+      .kanban-grid { grid-template-columns: repeat(7, minmax(180px, 1fr)); }
     }
-
     @media (max-width: 760px) {
-      body { font-size: 16px; }
-      .topbar { align-items: flex-start; flex-direction: column; gap: 12px; }
-      .actions { width: 100%; justify-content: flex-start; }
-      .kid-button { flex: 1 1 auto; min-width: 120px; min-height: 52px; font-size: 18px; }
-      .segmented { width: 100%; }
-      .segmented button { flex: 1; }
-      .summary-strip { grid-template-columns: 1fr; }
-      .kanban-grid { grid-template-columns: 1fr; overflow: visible; }
-      .kanban-column { min-width: 0; }
-      .calendar-container { 
-        height: 520px; 
-        min-height: 400px; 
-        padding: 4px;
-      }
-      .fc { font-size: 12px; }
-      .fc .fc-toolbar { flex-direction: column; gap: 6px; }
-      .fc-event-title { font-size: 11px; }
+      .kanban-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -405,7 +441,7 @@
   <div id="app" class="app"></div>
   <script>
     const STORAGE_KEY = 'learning-calendar-v3';
-    const VERSION = '1.3.3';
+    const VERSION = '1.7.0';
     const dayNames = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
     const mondayNames = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
 
@@ -444,10 +480,12 @@
         pin: '1234',
         kids: ['👦 哥哥', '👧 妹妹'],
         subjects: [
-          { name: '數學講義', enabled: true },
-          { name: '英文套書', enabled: true },
-          { name: '國文閱讀', enabled: true }
+          { name: '數學1', folder: '數學>小學', enabled: true },
+          { name: '書2', folder: '大班', enabled: true },
+          { name: '英文套書', folder: '', enabled: true },
+          { name: '國文閱讀', folder: '', enabled: true }
         ],
+        folders: ['數學>小學', '大班', '數學'], 
         fixedTasks: [],
         tempTasks: [],
         taskInstances: [],
@@ -469,10 +507,34 @@
         data.version = VERSION;
         data.pin = String(data.pin || '1234');
         data.kids = Array.isArray(data.kids) && data.kids.length ? data.kids.map(String) : base.kids;
+        
         data.subjects = Array.isArray(data.subjects) ? data.subjects.map(subject => ({
           name: String(subject.name || '').trim(),
+          folder: String(subject.folder || '').replace(/＞/g, '>').trim(), 
           enabled: subject.enabled !== false
         })).filter(subject => subject.name) : base.subjects;
+        
+        data.folders = Array.isArray(data.folders) ? data.folders.map(f => String(f || '').replace(/＞/g, '>').trim()).filter(Boolean) : base.folders;
+        
+        data.subjects.forEach(s => {
+          if (s.folder && !data.folders.includes(s.folder)) {
+            data.folders.push(s.folder);
+          }
+        });
+
+        // 自動展開或補齊樹狀結構父節點到 folders 中
+        const extraFolders = [];
+        data.folders.forEach(f => {
+          const parts = f.split('>');
+          for(let i=1; i<=parts.length; i++) {
+            const subPath = parts.slice(0, i).join('>');
+            if (subPath && !data.folders.includes(subPath) && !extraFolders.includes(subPath)) {
+              extraFolders.push(subPath);
+            }
+          }
+        });
+        data.folders = [...data.folders, ...extraFolders];
+
         data.fixedTasks = Array.isArray(data.fixedTasks) ? data.fixedTasks.map(task => ({
           id: task.id || uid(),
           kid: data.kids.includes(task.kid) ? task.kid : data.kids[0],
@@ -480,6 +542,7 @@
           dayOfWeek: Number(task.dayOfWeek) || 0,
           memo: String(task.memo || '')
         })).filter(task => task.subject) : [];
+        
         data.tempTasks = Array.isArray(data.tempTasks) ? data.tempTasks.map(task => ({
           id: task.id || uid(),
           kid: data.kids.includes(task.kid) ? task.kid : data.kids[0],
@@ -488,6 +551,7 @@
           memo: String(task.memo || ''),
           done: Boolean(task.done)
         })).filter(task => task.subject) : [];
+        
         data.taskInstances = Array.isArray(data.taskInstances) ? data.taskInstances.map(task => ({
           id: task.id || uid(),
           sourceId: task.sourceId || '',
@@ -498,9 +562,8 @@
           memo: String(task.memo || ''),
           done: Boolean(task.done)
         })).filter(task => task.subject) : [];
+        
         data.settings = { ...base.settings, ...(data.settings || {}) };
-        if (!data.kids.includes(data.settings.selectedKid)) data.settings.selectedKid = data.kids[0];
-        if (!data.kids.includes(data.settings.adminKid)) data.settings.adminKid = data.kids[0];
         return data;
       }
     };
@@ -508,11 +571,7 @@
     const Repository = {
       initialize() {
         const loaded = this.load();
-        if (loaded) {
-          state.db = DataModel.normalize(loaded);
-        } else {
-          state.db = createDefaultData();
-        }
+        state.db = loaded ? DataModel.normalize(loaded) : createDefaultData();
         this.save(state.db);
         return state.db;
       },
@@ -527,8 +586,7 @@
       },
       exportJSON() { return JSON.stringify(DataModel.normalize(state.db), null, 2); },
       importJSON(jsonText) {
-        const parsed = JSON.parse(jsonText);
-        state.db = DataModel.normalize(parsed);
+        state.db = DataModel.normalize(JSON.parse(jsonText));
         this.save(state.db);
         return state.db;
       },
@@ -549,7 +607,9 @@
       frontCalendar: null,
       undoStack: [],
       redoStack: [],
-      clockInterval: null
+      clockInterval: null,
+      expandedFolders: {}, 
+      activeHistoryBook: null
     };
 
     function csvCell(value) {
@@ -578,7 +638,7 @@
       const nextState = state.redoStack.pop();
       state.db = DataModel.normalize(JSON.parse(nextState));
       persist(true, false);
-      toast('已取消復原 (重做成功) ↪');
+      toast('已取消復原 ↪');
     }
 
     function persist(render = true, createSnapshot = true) {
@@ -590,8 +650,7 @@
     }
 
     function enabledSubjects() {
-      const enabled = state.db.subjects.filter(subject => subject.enabled).map(subject => subject.name);
-      return enabled.length ? enabled : state.db.subjects.map(subject => subject.name);
+      return state.db.subjects.filter(subject => subject.enabled).map(subject => subject.name);
     }
 
     function isSubjectEnabled(name) {
@@ -606,21 +665,19 @@
       const pivotDate = fromISODate(baseISO);
       const year = pivotDate.getFullYear();
       const targetMonth = pivotDate.getMonth();
-      
       const firstDayOfMonth = new Date(year, targetMonth, 1);
       const lastDayOfMonth = new Date(year, targetMonth + 1, 0);
 
       let cursor = new Date(firstDayOfMonth);
       while (cursor <= lastDayOfMonth) {
         if (cursor.getDay() === Number(fixedTaskRule.dayOfWeek)) {
-          const date = toISODate(cursor);
           state.db.taskInstances.push({
             id: uid(),
             sourceId: fixedTaskRule.id,
             type: 'fixed',
             kid: fixedTaskRule.kid,
             subject: fixedTaskRule.subject,
-            date,
+            date: toISODate(cursor),
             memo: fixedTaskRule.memo,
             done: false
           });
@@ -632,14 +689,7 @@
     function syncTempInstances() {
       const fixedInstances = state.db.taskInstances.filter(task => task.type !== 'temp');
       const tempInstances = state.db.tempTasks.map(task => ({
-        id: task.id,
-        sourceId: task.id,
-        type: 'temp',
-        kid: task.kid,
-        subject: task.subject,
-        date: task.date,
-        memo: task.memo,
-        done: task.done
+        id: task.id, sourceId: task.id, type: 'temp', kid: task.kid, subject: task.subject, date: task.date, memo: task.memo, done: task.done
       }));
       state.db.taskInstances = [...fixedInstances, ...tempInstances];
     }
@@ -669,8 +719,6 @@
       if (!clean || state.db.kids.includes(clean)) return toast('人物名稱重複或空白');
       snapshot();
       state.db.kids.push(clean);
-      state.db.settings.adminKid = clean;
-      state.db.settings.selectedKid = clean;
       persist(true, false);
     }
 
@@ -679,17 +727,35 @@
       if (!confirm(`確定要刪除「${name}」？`)) return;
       snapshot();
       state.db.kids = state.db.kids.filter(k => k !== name);
-      if (!state.db.kids.includes(state.db.settings.selectedKid)) state.db.settings.selectedKid = state.db.kids[0];
-      if (!state.db.kids.includes(state.db.settings.adminKid)) state.db.settings.adminKid = state.db.kids[0];
       persist(true, false);
-      toast('成員已刪除');
     }
 
-    function addSubject(name) {
-      const clean = name.trim();
-      if (!clean || state.db.subjects.some(subject => subject.name === clean)) return toast('科目名稱重複或空白');
+    function handleFlexibleAdd(subjectText, folderText) {
+      const sName = subjectText.trim();
+      const fName = folderText.replace(/＞/g, '>').trim();
+
+      if (!sName && !fName) return toast('請至少輸入科目書名或資料夾名稱');
+
       snapshot();
-      state.db.subjects.push({ name: clean, enabled: true });
+      
+      if (!sName && fName) {
+        if (state.db.folders.includes(fName)) return toast('此資料夾已存在');
+        state.db.folders.push(fName);
+        toast(`已成功建立空資料夾：📂 ${fName.replace(/>/g, ' ＞ ')}`);
+      }
+      else if (sName && !fName) {
+        if (state.db.subjects.some(s => s.name === sName)) return toast('書名重複');
+        state.db.subjects.push({ name: sName, folder: '', enabled: true });
+        toast(`已新增散書：📘 ${sName}`);
+      }
+      else if (sName && fName) {
+        if (state.db.subjects.some(s => s.name === sName)) return toast('書名重複');
+        if (!state.db.folders.includes(fName)) {
+          state.db.folders.push(fName);
+        }
+        state.db.subjects.push({ name: sName, folder: fName, enabled: true });
+        toast(`已將書籍 📘 ${sName} 加入 📂 ${fName.replace(/>/g, ' ＞ ')}`);
+      }
       persist(true, false);
     }
 
@@ -698,36 +764,50 @@
       snapshot();
       state.db.subjects = state.db.subjects.filter(s => s.name !== name);
       persist(true, false);
-      toast('科目已刪除');
+    }
+
+    // 🗑️ 刪除資料夾功能：資料夾內的書變成散書
+    function deleteFolder(folderPath) {
+      if (!confirm(`確定刪除資料夾「${folderPath.replace(/>/g, ' ＞ ')}」嗎？\n注意：裡面的書將會釋放出來變成獨立散書。`)) return;
+      snapshot();
+      
+      // 1. 先將直接屬於這個資料夾路徑的書解放（清空資料夾欄位）
+      state.db.subjects.forEach(sub => {
+        if (sub.folder === folderPath) {
+          sub.folder = '';
+        }
+        // 同時處理子資料夾路徑的情況
+        else if (sub.folder.startsWith(folderPath + '>')) {
+          sub.folder = sub.folder.substring(folderPath.length + 1);
+        }
+      });
+
+      // 2. 移除資料夾本身
+      state.db.folders = state.db.folders.filter(f => f !== folderPath && !f.startsWith(folderPath + '>'));
+      
+      toast('資料夾已移除，書本已變回散書');
+      persist(true, false);
     }
 
     function addFixedTask(form) {
       const subject = form.subject.value;
       if (!subject) return toast('請先建立科目');
-      
       snapshot();
       const newFixed = {
-        id: uid(),
-        kid: state.db.settings.adminKid,
-        subject,
-        dayOfWeek: Number(form.dayOfWeek.value),
-        memo: form.memo.value.trim()
+        id: uid(), kid: state.db.settings.adminKid, subject, dayOfWeek: Number(form.dayOfWeek.value), memo: form.memo.value.trim()
       };
       state.db.fixedTasks.push(newFixed);
       generateInstancesForSingleMonth(todayISO(), newFixed);
-
       form.reset();
       persist(true, false);
-      toast('固定行程已成功發布至本月份！');
+      toast('固定行程已發布！');
     }
 
     function addTempTask({ kid, subject, date, memo }) {
       if (!subject || !date) return toast('請選擇日期與科目');
       snapshot();
       state.db.tempTasks.push({ id: uid(), kid, subject, date, memo: memo.trim(), done: false });
-      syncTempInstances();
       persist(true, false);
-      toast('已新增行程');
     }
 
     function updateTask(taskId, updates) {
@@ -759,38 +839,29 @@
     }
 
     function deleteFixedTaskRule(ruleId) {
-      if (!confirm('確定刪除固定行程規則？目前已產生的相關未完成排程將一併刪除。')) return;
+      if (!confirm('確定刪除固定行程規則？')) return;
       snapshot();
       state.db.fixedTasks = state.db.fixedTasks.filter(item => item.id !== ruleId);
       state.db.taskInstances = state.db.taskInstances.filter(item => !(item.sourceId === ruleId && !item.done));
       persist(true, false);
-      toast('固定行程規則已刪除');
     }
 
     function resetThisWeek() {
       if (!confirm('確定清除本週完成狀態？')) return;
       snapshot();
       const dates = new Set(weekDates(state.currentWeek));
-      state.db.taskInstances.forEach(task => {
-        if (dates.has(task.date)) task.done = false;
-      });
-      state.db.tempTasks.forEach(task => {
-        if (dates.has(task.date)) task.done = false;
-      });
+      state.db.taskInstances.forEach(task => { if (dates.has(task.date)) task.done = false; });
+      state.db.tempTasks.forEach(task => { if (dates.has(task.date)) task.done = false; });
       persist(true, false);
-      toast('本週已重置');
     }
 
     function downloadFile(filename, content, type) {
       const blob = new Blob([content], { type });
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = url;
-      link.download = filename;
+      link.href = url; link.download = filename;
       document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(url);
+      link.click(); link.remove(); URL.revokeObjectURL(url);
     }
 
     function toast(message) {
@@ -799,31 +870,23 @@
       node.className = 'toast';
       node.textContent = message;
       document.body.appendChild(node);
-      setTimeout(() => node.remove(), 2200);
+      setTimeout(() => node.remove(), 2000);
     }
 
     function startLiveClock() {
       if (state.clockInterval) clearInterval(state.clockInterval);
       const clockEl = document.getElementById('liveClock');
       if (!clockEl) return;
-
       const updateClock = () => {
         const now = new Date();
-        const yyyy = now.getFullYear();
-        const mm = pad(now.getMonth() + 1);
-        const dd = pad(now.getDate());
-        const dayText = dayNames[now.getDay()];
-        const hh = pad(now.getHours());
-        const min = pad(now.getMinutes());
-        const ss = pad(now.getSeconds());
-        clockEl.textContent = `現在時間：${yyyy}年${mm}月${dd}日 (${dayText}) ${hh}:${min}:${ss}`;
+        clockEl.textContent = `現在時間：${now.getFullYear()}年${pad(now.getMonth() + 1)}月${pad(now.getDate())}日 (${dayNames[now.getDay()]}) ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
       };
       updateClock();
       state.clockInterval = setInterval(updateClock, 1000);
     }
 
     function KidSelector({ selected, onClickName = 'selectKid', compact = false }) {
-      return `<div class="kid-selector" data-component="KidSelector">
+      return `<div class="kid-selector">
         ${state.db.kids.map(kid => `
           <button class="kid-button ${kid === selected ? 'active' : ''} ${compact ? 'small' : ''}" data-action="${onClickName}" data-kid="${escapeHTML(kid)}">${escapeHTML(kid)}</button>
         `).join('')}
@@ -832,7 +895,7 @@
 
     function TaskCard(task) {
       return `
-      <article class="task-card ${task.done ? 'done' : ''}" data-component="TaskCard">
+      <article class="task-card ${task.done ? 'done' : ''}">
         <div class="task-head">
           <div class="task-title">${escapeHTML(task.subject)}</div>
           <button class="status-pill ${task.done ? 'done' : ''}" data-action="toggleDone" data-task-id="${task.id}">
@@ -844,7 +907,7 @@
     }
 
     function KanbanView(days) {
-      return `<section class="kanban-grid" data-component="KanbanView">
+      return `<section class="kanban-grid">
         ${days.map((day, index) => `
           <div class="kanban-column card ${dateIsAllDone(day.tasks) ? 'all-done' : ''}">
             <div class="day-title">
@@ -858,36 +921,20 @@
     }
 
     function FrontCalendarView() {
-      return `
-      <div class="card panel" style="padding: 14px;">
-        <div class="day-title" style="margin-bottom: 12px;">
-          <strong>📅 月份行事曆 (整月視圖)</strong>
-          <span style="color:var(--muted)">提示：直接點擊月曆項目就能切換「完成狀態」</span>
-        </div>
-        <div class="calendar-container">
-          <div id="front-calendar"></div>
-        </div>
-      </div>`;
+      return `<div class="card panel" style="padding: 10px;"><div class="calendar-container"><div id="front-calendar"></div></div></div>`;
     }
 
     function GlobalHeader(title, subtitle, isFront = true) {
       return `
         <header class="topbar">
-          <div class="brand">
-            <h1>${title}</h1>
-            <span>${subtitle}</span>
-          </div>
+          <div class="brand"><h1>${title}</h1><span>${subtitle}</span></div>
           <div class="actions">
-            ${state.undoStack.length ? `<button class="undo-btn" data-action="undoAction">↩ 恢復上一動</button>` : ''}
-            ${state.redoStack.length ? `<button class="redo-btn" data-action="redoAction">↪ 取消復原(恢復前)</button>` : ''}
-            <button class="icon-btn ghost" title="深色模式" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
-            ${isFront ? 
-              `<button class="admin-btn" data-action="openAdmin">🛠 進入後台</button>` : 
-              `<button class="primary" style="background:#059669;" data-action="goFront">回前台首頁</button>`
-            }
+            ${state.undoStack.length ? `<button class="undo-btn small" data-action="undoAction">↩ 復原</button>` : ''}
+            ${state.redoStack.length ? `<button class="redo-btn small" data-action="redoAction">↪ 重做</button>` : ''}
+            <button class="icon-btn ghost small" data-action="toggleTheme">${state.db.settings.darkMode ? '☀️' : '🌙'}</button>
+            ${isFront ? `<button class="admin-btn" data-action="openAdmin">🛠 進入後台</button>` : `<button class="primary" style="background:#059669;" data-action="goFront">回前台</button>`}
           </div>
-        </header>
-      `;
+        </header>`;
     }
 
     function FrontPage() {
@@ -896,31 +943,23 @@
       const tasks = days.flatMap(day => day.tasks);
       const done = tasks.filter(task => task.done).length;
       const viewMode = state.db.settings.viewMode || 'week';
-
       return `
         ${GlobalHeader('親子學習週曆', `${escapeHTML(kid)} 的任務面板`, true)}
         <main class="container">
-          <div class="toolbar">
-            ${KidSelector({ selected: kid })}
-            <div class="segmented">
-              <button class="${viewMode === 'week' ? 'active' : ''}" data-action="setViewMode" data-mode="week">週（看板）模式</button>
-              <button class="${viewMode === 'month' ? 'active' : ''}" data-action="setViewMode" data-mode="month">月（月曆）模式</button>
-            </div>
-          </div>
+          <div class="toolbar">${KidSelector({ selected: kid })}<div class="segmented"><button class="${viewMode === 'week' ? 'active' : ''}" data-action="setViewMode" data-mode="week">週看板</button><button class="${viewMode === 'month' ? 'active' : ''}" data-action="setViewMode" data-mode="month">月曆</button></div></div>
           <section class="summary-strip">
             <div class="metric"><strong>${tasks.length}</strong><span>本週任務</span></div>
             <div class="metric"><strong>${done}</strong><span>已完成</span></div>
             <div class="metric"><strong>${tasks.length - done}</strong><span>未完成</span></div>
           </section>
           ${viewMode === 'month' ? FrontCalendarView() : KanbanView(days)}
-        </main>
-      `;
+        </main>`;
     }
 
     function AdminPanel() {
       return `
         ${GlobalHeader('家長管理後台', `目前管理：${escapeHTML(state.db.settings.adminKid)}`, false)}
-        <main class="container admin-layout" data-component="AdminPanel">
+        <main class="container admin-layout">
           <aside class="admin-stack">
             ${AdminToolbar()}
             ${SubjectManager()}
@@ -931,8 +970,7 @@
             ${CalendarManager()}
             ${HistoryTable()}
           </section>
-        </main>
-      `;
+        </main>`;
     }
 
     function AdminToolbar() {
@@ -940,65 +978,62 @@
       return `
       <details class="panel-details card" open>
         <summary class="panel-summary">⚙️ 基礎設定</summary>
-        <div class="panel-content">
-          <div class="segmented">
-            <button class="${state.db.settings.adminMode === 'single' ? 'active' : ''}" data-action="setAdminMode" data-mode="single">單人模式</button>
-            <button class="${state.db.settings.adminMode === 'multi' ? 'active' : ''}" data-action="setAdminMode" data-mode="multi">多人模式</button>
+        <div class="panel-content" style="gap: 8px;">
+          <div class="segmented" style="width: 100%;">
+            <button style="flex:1" class="${state.db.settings.adminMode === 'single' ? 'active' : ''}" data-action="setAdminMode" data-mode="single">單人</button>
+            <button style="flex:1" class="${state.db.settings.adminMode === 'multi' ? 'active' : ''}" data-action="setAdminMode" data-mode="multi">多人</button>
           </div>
           ${KidSelector({ selected: state.db.settings.adminKid, onClickName: 'selectAdminKid', compact: true })}
           
-          <div style="margin: 6px 0 10px;">
-            <span style="font-size: 13px; font-weight: bold; color: var(--muted);">人員管理名單：</span>
-            <div class="list" style="margin-top: 6px;">
-              ${state.db.kids.map(k => `
-                <div class="list-row" style="padding: 6px 10px;">
-                  <span>${escapeHTML(k)}</span>
-                  <button class="small danger" style="padding: 2px 8px; min-height: 30px;" data-action="deleteKid" data-kid="${escapeHTML(k)}">刪除</button>
-                </div>
-              `).join('')}
+          <div class="compact-form-group">
+            <div class="form-grid">
+              <label>科目書名(選填)<input id="cfgSubject" placeholder="如: 書1"></label>
+              <label>資料夾層級(選填)<input id="cfgFolder" placeholder="如: 資料夾1>小學"></label>
             </div>
+            <button class="primary small" style="width:100%; min-height:36px;" data-action="submitFlexibleAdd">新增</button>
           </div>
 
           <form class="inline-form" data-form="addKid">
-            <label>新增人物<input name="kid" placeholder="例如：👶 弟弟" required></label>
-            <button class="primary">新增</button>
+            <input name="kid" placeholder="新增人物(如: 👶 弟弟)" required>
+            <button class="primary small">新增人員</button>
           </form>
-          <form class="inline-form" data-form="addSubject">
-            <label>新增科目<input name="subject" placeholder="科目名稱" required></label>
-            <button class="primary">新增</button>
-          </form>
-          <form class="inline-form" data-form="changePin">
-            <label>修改PIN碼<input name="pin" minlength="4" placeholder="至少4碼" required></label>
-            <button class="primary">儲存</button>
-          </form>
-          <div class="list-row" style="padding: 8px 10px; margin-top: 4px;">
-            <span style="font-size: 14px; font-weight: bold;">暫停使用後台 PIN 碼認證</span>
-            <button class="small ${disablePin ? 'danger' : 'ghost'}" data-action="toggleDisablePin">
-              ${disablePin ? '已暫停 (免輸入)' : '已啟用 (需驗證)'}
-            </button>
+
+          <div class="list" style="max-height: 90px; overflow-y: auto;">
+            ${state.db.kids.map(k => `<div class="list-row" style="padding:4px 8px;"><span>${escapeHTML(k)}</span><button class="small danger" style="min-height:26px; padding:2px 6px;" data-action="deleteKid" data-kid="${escapeHTML(k)}">刪除</button></div>`).join('')}
           </div>
-          <button class="danger" data-action="resetWeek">本週重置</button>
+
+          <form class="inline-form" data-form="changePin">
+            <input name="pin" minlength="4" placeholder="修改PIN碼" required>
+            <button class="primary small">修改PIN</button>
+          </form>
+          
+          <div style="display:flex; gap:6px;">
+            <button class="small ${disablePin ? 'danger' : 'ghost'}" style="flex:1;" data-action="toggleDisablePin">${disablePin ? '免驗證' : '需驗證'}</button>
+            <button class="danger small" style="flex:1;" data-action="resetWeek">本週重置</button>
+          </div>
         </div>
       </details>`;
     }
 
-    // 優化第3點：將啟用/停用整合成一個緊湊的狀態按鈕，配合 Grid 防止換行爆開
+    // 🔒 升級為圖書管理：加入專屬拖曳移動順序手把，只有按下手把才觸發排序
     function SubjectManager() {
       return `
       <details class="panel-details card" open>
-        <summary class="panel-summary">📚 科目管理</summary>
+        <summary class="panel-summary">📚 圖書管理 (按住 ⣿ 可調整上下順序)</summary>
         <div class="panel-content">
-          <div class="list">
-            ${state.db.subjects.map(subject => `
-              <div class="list-row" style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 6px 10px;">
-                <strong style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHTML(subject.name)}">${escapeHTML(subject.name)}</strong>
-                <div style="display: flex; gap: 4px; align-items: center; flex-shrink: 0;">
-                  <button class="small ${subject.enabled ? 'primary' : 'ghost'}" style="min-height: 32px; padding: 4px 8px; font-size: 13px;" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="${subject.enabled ? 'false' : 'true'}">
-                    ${subject.enabled ? '🟢 啟用' : '⚪ 停用'}
+          <div class="list" id="sortableSubjectList">
+            ${state.db.subjects.map((subject, idx) => `
+              <div class="list-row sortable-item" data-index="${idx}">
+                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: flex; align-items: center; gap: 4px;">
+                  <span class="drag-handle" draggable="true">⣿</span>
+                  <strong>${escapeHTML(subject.name)}</strong>
+                  ${subject.folder ? `<span style="font-size: 11px; color: var(--muted); background: var(--surface-2); padding: 1px 4px; border-radius: 4px; max-width:120px; overflow:hidden; text-overflow:ellipsis;">📂 ${escapeHTML(subject.folder.replace(/>/g, ' ＞ '))}</span>` : ''}
+                </div>
+                <div style="display: flex; gap: 4px; align-items: center;">
+                  <button class="small ${subject.enabled ? 'primary' : 'ghost'}" style="min-height: 28px; padding: 2px 6px; font-size:12px;" data-action="setSubject" data-subject="${escapeHTML(subject.name)}" data-enabled="${subject.enabled ? 'false' : 'true'}">
+                    ${subject.enabled ? '🟢' : '⚪'}
                   </button>
-                  <button class="small danger" style="min-height: 32px; padding: 4px 8px; font-size: 13px; background: var(--danger); color: white;" data-action="deleteSubject" data-subject="${escapeHTML(subject.name)}">
-                    🗑️ 刪除
-                  </button>
+                  <button class="small danger" style="min-height: 28px; padding: 2px 6px;" data-action="deleteSubject" data-subject="${escapeHTML(subject.name)}">🗑️</button>
                 </div>
               </div>`).join('')}
           </div>
@@ -1014,78 +1049,173 @@
         <summary class="panel-summary">🔄 固定行程</summary>
         <div class="panel-content">
           <form class="form-grid" data-form="addFixed">
-            <label>星期
-              <select name="dayOfWeek">${[1,2,3,4,5,6,0].map(day => `<option value="${day}">${dayNames[day]}</option>`).join('')}</select>
-            </label>
-            <label>科目
-              <select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}">${escapeHTML(subject)}</option>`).join('')}</select>
-            </label>
-            <label style="grid-column: 1 / -1;">備註<input name="memo" placeholder="例如：第3-5頁"></label>
-            <button class="primary" style="grid-column: 1 / -1;">新增 (自動配置至本月)</button>
+            <label><select name="dayOfWeek">${[1,2,3,4,5,6,0].map(day => `<option value="${day}">${dayNames[day]}</option>`).join('')}</select></label>
+            <label><select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}">${escapeHTML(subject)}</option>`).join('')}</select></label>
+            <input name="memo" placeholder="備註" style="grid-column: 1 / -1;">
+            <button class="primary small" style="grid-column: 1 / -1;">發布至本月</button>
           </form>
-          <div class="list">
-            ${tasks.length ? tasks.map(task => `
-              <div class="list-row">
-                <strong>${escapeHTML(task.kid)}｜${dayNames[task.dayOfWeek]}｜${escapeHTML(task.subject)}</strong>
-                <button class="small danger" data-action="deleteFixed" data-id="${task.id}">刪除</button>
-              </div>`).join('') : '<div class="empty">尚無固定任務</div>'}
+          <div class="list" style="max-height:120px; overflow-y:auto;">
+            ${tasks.map(task => `<div class="list-row" style="padding:4px 6px;"><span>${dayNames[task.dayOfWeek]}-${escapeHTML(task.subject)}</span><button class="small danger" style="min-height:24px; padding:2px 6px;" data-action="deleteFixed" data-id="${task.id}">✕</button></div>`).join('')}
           </div>
         </div>
       </details>`;
     }
 
     function CalendarManager() {
-      return `
-      <div class="panel card" data-component="CalendarManager">
-        <div class="panel-head">
-          <h2>📅 月曆大視圖 (排程計畫)</h2>
-          <div id="liveClock"></div>
-          <span style="color: var(--muted); font-size: 13px;">右下角斜線可自由拉動縮放高寬</span>
-        </div>
-        <div class="calendar-container">
-          <div id="calendar"></div>
-        </div>
-      </div>`;
+      return `<div class="panel card"><div id="liveClock"></div><div class="calendar-container"><div id="calendar"></div></div></div>`;
     }
 
+    // 🌳 樹狀圖歷史置物櫃引擎（實現資料夾1>小學>書1、空資料夾與獨立散書）
     function HistoryTable() {
       syncTempInstances();
       const kids = state.db.settings.adminMode === 'multi' ? state.db.kids : [state.db.settings.adminKid];
       const tasks = allHistoryTasks().filter(task => kids.includes(task.kid) && task.done).sort(sortTasksDesc);
-      const subjects = [...new Set([...state.db.subjects.map(subject => subject.name), ...tasks.map(task => task.subject)])];
       
-      return `<section class="panel card" data-component="HistoryTable">
-        <div class="panel-head"><h2>🗂 歷史紀錄（僅顯示已完成）</h2></div>
-        <div class="admin-stack">
-          ${subjects.map(subject => {
-            const rows = tasks.filter(task => task.subject === subject);
-            return `<details class="subject-details" ${rows.length ? 'open' : ''}>
-              <summary class="subject-summary">▶ ${escapeHTML(subject)} (${rows.length} 筆已完成)</summary>
-              <div class="table-wrap">
-                <table>
-                  <thead><tr><th>小孩</th><th>日期</th><th>備註</th><th>狀態</th><th>快捷操作</th></tr></thead>
-                  <tbody>
-                    ${rows.length ? rows.map(task => HistoryRow(task)).join('') : '<tr><td colspan="5" style="color: var(--muted); padding: 12px;">尚無已完成紀錄。</td></tr>'}
-                  </tbody>
-                </table>
+      const definedSubjects = state.db.subjects;
+      const independentBooks = [];
+      const renderedSubjectsSet = new Set();
+
+      // 1. 初始化資料夾樹結構
+      const treeFolders = {};
+      state.db.folders.forEach(fPath => {
+        treeFolders[fPath] = { books: [], isRegistered: true };
+      });
+
+      // 2. 把書本丟到對應資料夾
+      definedSubjects.forEach(sub => {
+        renderedSubjectsSet.add(sub.name);
+        if (sub.folder && sub.folder.trim() !== '') {
+          const fPath = sub.folder.trim();
+          if (!treeFolders[fPath]) treeFolders[fPath] = { books: [], isRegistered: false };
+          treeFolders[fPath].books.push(sub.name);
+        } else {
+          independentBooks.push(sub.name);
+        }
+      });
+
+      // 處理有歷史任務但後來設定檔中被拔除或未定義的科目，歸為獨立散書
+      const historicalSubjects = [...new Set(tasks.map(task => task.subject))];
+      historicalSubjects.forEach(subName => {
+        if (!renderedSubjectsSet.has(subName)) {
+          independentBooks.push(subName);
+        }
+      });
+
+      let bookshelfHtml = '';
+
+      // 3. 渲染資料夾樹狀節點（包含多層級解析）
+      Object.keys(treeFolders).sort((a,b) => a.localeCompare(b)).forEach(folderPath => {
+        const isOpen = !!state.expandedFolders[folderPath];
+        const childrenBookNames = treeFolders[folderPath].books;
+        
+        // 計算該層級或子層級的所有記錄數
+        const totalFolderRecords = tasks.filter(t => {
+          const subObj = definedSubjects.find(s => s.name === t.subject);
+          return subObj && (subObj.folder === folderPath || subObj.folder.startsWith(folderPath + '>'));
+        }).length;
+
+        // 將路徑美化顯示，例如 資料夾1 > 小學
+        const displayPath = folderPath.replace(/>/g, ' ＞ ');
+
+        bookshelfHtml += `
+          <div class="book-card folder-type ${isOpen ? 'folder-open' : ''}" 
+               data-action="toggleFolder" 
+               data-folder="${escapeHTML(folderPath)}"
+               data-drop-target="folder"
+               data-folder-name="${escapeHTML(folderPath)}">
+            <button class="folder-delete-btn" data-action="clickDeleteFolder" data-folder="${escapeHTML(folderPath)}">🗑️</button>
+            <div class="book-title" style="color: #6366f1; font-size: 13px;">📂 ${escapeHTML(displayPath)}</div>
+            <div class="book-count">書籍:${childrenBookNames.length} 筆數:${totalFolderRecords}</div>
+          </div>
+        `;
+
+        if (isOpen) {
+          childrenBookNames.forEach(subName => {
+            const rowsCount = tasks.filter(t => t.subject === subName).length;
+            const isBookActive = (state.activeHistoryBook && state.activeHistoryBook.subject === subName);
+            
+            bookshelfHtml += `
+              <div class="book-card is-child ${isBookActive ? 'active' : ''}" 
+                   draggable="true"
+                   data-drag-type="book"
+                   data-subject-name="${escapeHTML(subName)}"
+                   data-action="selectHistoryBook" 
+                   data-subject="${escapeHTML(subName)}" 
+                   data-path="${escapeHTML(displayPath)} ＞ ${escapeHTML(subName)}">
+                <div class="tree-node-title">📄 內含</div>
+                <div class="book-title">📘 ${escapeHTML(subName)}</div>
+                <div class="book-count">📋 ${rowsCount} 筆</div>
               </div>
-            </details>`;
-          }).join('')}
+            `;
+          });
+        }
+      });
+
+      // 獨立散書區塊
+      bookshelfHtml += `<div class="bookshelf-divider"></div>`;
+      bookshelfHtml += `<div class="bookshelf-section-title">✨ 獨立散書</div>`;
+
+      independentBooks.forEach(subName => {
+        const rowsCount = tasks.filter(t => t.subject === subName).length;
+        const isBookActive = (state.activeHistoryBook && state.activeHistoryBook.subject === subName);
+
+        bookshelfHtml += `
+          <div class="book-card" 
+               draggable="true"
+               data-drag-type="book"
+               data-subject-name="${escapeHTML(subName)}"
+               data-action="selectHistoryBook" 
+               data-subject="${escapeHTML(subName)}" 
+               data-path="獨立散書 ＞ ${escapeHTML(subName)}">
+            <div class="book-title">📘 ${escapeHTML(subName)}</div>
+            <div class="book-count">📋 ${rowsCount} 筆</div>
+          </div>
+        `;
+      });
+
+      let drawerHtml = '';
+      if (state.activeHistoryBook) {
+        const currentTargetSubject = state.activeHistoryBook.subject;
+        const currentPathName = state.activeHistoryBook.path;
+        const filteredRows = tasks.filter(task => task.subject === currentTargetSubject);
+
+        drawerHtml = `
+          <div class="table-drawer-bottom">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h3 style="font-weight:900; font-size:15px;">📊 項目：<span style="color:var(--primary);">${escapeHTML(currentPathName)}</span></h3>
+              <button class="small ghost" style="min-height:26px; padding:2px 8px;" data-action="closeHistoryDrawer">✕ 關閉</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>成員</th><th>日期</th><th>備註</th><th>狀態</th><th>操作</th></tr></thead>
+                <tbody>
+                  ${filteredRows.length ? filteredRows.map(task => HistoryRow(task)).join('') : '<tr><td colspan="5" style="color: var(--muted); padding: 8px; text-align:center;">無紀錄</td></tr>'}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
+      return `<section class="panel card" data-component="HistoryTable">
+        <div class="panel-head">
+          <div><h2>🗂 歷史紀錄置物櫃</h2></div>
         </div>
+        <div class="history-flex" id="historyFlexContainer">${bookshelfHtml}</div>
+        ${drawerHtml}
       </section>`;
     }
 
-    // 優化第2點：修改/刪除全面精簡，緊湊的 Excel 行高與字級
     function HistoryRow(task) {
       return `<tr>
         <td><strong>${escapeHTML(task.kid)}</strong></td>
         <td><span style="font-family: monospace;">${task.date}</span></td>
         <td style="white-space: pre-wrap; word-break: break-all;">${escapeHTML(task.memo || '—')}</td>
-        <td><span style="color:var(--good);font-weight:bold;font-size:13px;">✅ 已完成</span></td>
+        <td><span style="color:var(--good);font-weight:bold;font-size:12px;">✅ 完成</span></td>
         <td>
           <div class="cell-actions">
-            <button class="small ghost" style="border:1px solid var(--line);" data-action="editTask" data-task-id="${task.id}">修改</button>
-            <button class="small danger" style="background:var(--danger);color:white;" data-action="deleteTask" data-task-id="${task.id}">刪除</button>
+            <button class="small ghost" style="min-height:26px; padding:2px 6px;" data-action="editTask" data-task-id="${task.id}">改</button>
+            <button class="small danger" style="min-height:26px; padding:2px 6px; background:var(--danger); color:white;" data-action="deleteTask" data-task-id="${task.id}">刪</button>
           </div>
         </td>
       </tr>`;
@@ -1095,15 +1225,14 @@
       return `
       <details class="panel-details card">
         <summary class="panel-summary">💾 備份與匯出</summary>
-        <div class="panel-content">
-          <button class="primary" data-action="exportJSON">JSON備份匯出</button>
-          <label>JSON還原匯入<input type="file" accept="application/json,.json" data-action="importJSON"></label>
-          <button class="primary" data-action="exportCSV">CSV報表匯出</button>
+        <div class="panel-content" style="display:flex; gap:6px; flex-wrap:wrap;">
+          <button class="primary small" style="flex:1" data-action="exportJSON">匯出JSON備份</button>
+          <button class="primary small" style="flex:1" data-action="exportCSV">匯出CSV報表</button>
+          <label style="width:100%">匯入備份<input type="file" accept=".json" data-action="importJSON"></label>
         </div>
       </details>`;
     }
 
-    // 優化第1點：彈出視窗內增加直接「刪除排程」按鈕
     function TaskModal(date, task = null) {
       const subjects = enabledSubjects();
       const selectedSubject = task?.subject || subjects[0] || '';
@@ -1113,17 +1242,13 @@
           <h2>${task ? '修改任務內容' : `新增 ${date} 臨時任務`}</h2>
           <input type="hidden" name="taskId" value="${task?.id || ''}">
           <input type="hidden" name="date" value="${date}">
-          <label>小孩
-            <select name="kid">${state.db.kids.map(item => `<option value="${escapeHTML(item)}" ${item === kid ? 'selected' : ''}>${escapeHTML(item)}</option>`).join('')}</select>
-          </label>
-          <label>科目
-            <select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}" ${subject === selectedSubject ? 'selected' : ''}>${escapeHTML(subject)}</option>`).join('')}</select>
-          </label>
+          <label>小孩<select name="kid">${state.db.kids.map(item => `<option value="${escapeHTML(item)}" ${item === kid ? 'selected' : ''}>${escapeHTML(item)}</option>`).join('')}</select></label>
+          <label>科目<select name="subject">${subjects.map(subject => `<option value="${escapeHTML(subject)}" ${subject === selectedSubject ? 'selected' : ''}>${escapeHTML(subject)}</option>`).join('')}</select></label>
           <label>備註<textarea name="memo">${escapeHTML(task?.memo || '')}</textarea></label>
-          <div class="actions" style="display: flex; justify-content: flex-end; gap: 8px;">
-            <button type="button" class="ghost" data-action="closeModal">取消</button>
-            ${task ? `<button type="button" class="danger" style="background:var(--danger);color:white;" data-action="deleteTask" data-task-id="${task.id}">🗑️ 刪除排程</button>` : ''}
-            <button class="primary">儲存變更</button>
+          <div class="actions" style="display: flex; justify-content: flex-end; gap: 6px;">
+            <button type="button" class="ghost small" data-action="closeModal">取消</button>
+            ${task ? `<button type="button" class="danger small" style="background:var(--danger);color:white;" data-action="deleteTask" data-task-id="${task.id}">刪除排程</button>` : ''}
+            <button class="primary small">儲存</button>
           </div>
         </form>
       </div>`;
@@ -1146,24 +1271,13 @@
         }));
 
         state.calendar = new FullCalendar.Calendar(el, {
-          initialView: 'dayGridMonth',
-          locale: 'zh-tw',
-          height: '100%',
-          firstDay: 1,
-          fixedWeekCount: false, 
+          initialView: 'dayGridMonth', locale: 'zh-tw', height: '100%', firstDay: 1, fixedWeekCount: false, 
           headerToolbar: { left: 'prev,next', center: 'title', right: '' },
           events: getEvents(),
           dateClick: info => openTaskModal(info.dateStr),
           eventClick: info => {
             const task = state.db.taskInstances.find(item => item.id === info.event.id);
             if (task) openTaskModal(task.date, task);
-          },
-          datesSet: () => {
-            syncTempInstances();
-            if (state.calendar) {
-              state.calendar.removeAllEvents();
-              state.calendar.addEventSource(getEvents());
-            }
           }
         });
         state.calendar.render();
@@ -1177,31 +1291,18 @@
 
         const getFrontEvents = () => allHistoryTasks().filter(task => task.kid === currentKid && isSubjectEnabled(task.subject)).map(task => ({
           id: task.id,
-          title: `${task.subject}${task.memo ? '\n📝 '+task.memo : ''}${task.done ? ' (✅完成)' : ''}`,
+          title: `${task.subject}${task.memo ? '\n📝 '+task.memo : ''}${task.done ? ' (✅)' : ''}`,
           start: task.date,
           backgroundColor: task.done ? '#1f9d68' : '#e2e8f0',
           textColor: task.done ? '#ffffff' : '#1e293b',
-          borderColor: task.done ? 'transparent' : '#cbd5e1'
+          borderColor: 'transparent'
         }));
 
         state.frontCalendar = new FullCalendar.Calendar(el, {
-          initialView: 'dayGridMonth',
-          locale: 'zh-tw',
-          height: '100%',
-          firstDay: 1,
-          fixedWeekCount: false, 
+          initialView: 'dayGridMonth', locale: 'zh-tw', height: '100%', firstDay: 1, fixedWeekCount: false, 
           headerToolbar: { left: 'prev,next', center: 'title', right: '' },
           events: getFrontEvents(),
-          eventClick: info => {
-            toggleDone(info.event.id);
-          },
-          datesSet: () => {
-            syncTempInstances();
-            if (state.frontCalendar) {
-              state.frontCalendar.removeAllEvents();
-              state.frontCalendar.addEventSource(getFrontEvents());
-            }
-          }
+          eventClick: info => toggleDone(info.event.id)
         });
         state.frontCalendar.render();
       }
@@ -1211,7 +1312,124 @@
       const app = document.getElementById('app');
       app.innerHTML = state.screen === 'admin' ? AdminPanel() : FrontPage();
       document.documentElement.dataset.theme = state.db.settings.darkMode ? 'dark' : 'light';
+      initDragAndDrop(); 
       requestAnimationFrame(renderCalendar);
+    }
+
+    let draggedItemIdx = null;
+
+    function initDragAndDrop() {
+      // 🔒 修正後的拖曳手把排序邏輯
+      const sortableList = document.getElementById('sortableSubjectList');
+      if (sortableList) {
+        const items = sortableList.querySelectorAll('.sortable-item');
+        items.forEach(item => {
+          const handle = item.querySelector('.drag-handle');
+          
+          handle.addEventListener('dragstart', (e) => {
+            draggedItemIdx = item.dataset.index;
+            item.classList.add('dragging');
+            e.dataTransfer.setData('text/html', item.innerHTML);
+          });
+          
+          handle.addEventListener('dragend', () => {
+            item.classList.remove('dragging');
+            draggedItemIdx = null;
+          });
+
+          item.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const overItem = e.target.closest('.sortable-item');
+            if (overItem && draggedItemIdx !== null) {
+              const currentIdx = Number(draggedItemIdx);
+              const targetIdx = Number(overItem.dataset.index);
+              if (currentIdx !== targetIdx) {
+                snapshot();
+                const temp = state.db.subjects[currentIdx];
+                state.db.subjects.splice(currentIdx, 1);
+                state.db.subjects.splice(targetIdx, 0, temp);
+                draggedItemIdx = targetIdx; 
+                persist(true, false);
+              }
+            }
+          });
+        });
+      }
+
+      // 置物櫃雙向移動系統
+      const bookCards = document.querySelectorAll('.book-card[draggable="true"]');
+      const folderCards = document.querySelectorAll('.book-card[data-drop-target="folder"]');
+      const historyContainer = document.getElementById('historyFlexContainer');
+
+      bookCards.forEach(book => {
+        book.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', book.dataset.subjectName);
+          book.classList.add('active');
+        });
+        book.addEventListener('dragend', () => { book.classList.remove('active'); });
+      });
+
+      folderCards.forEach(folder => {
+        folder.addEventListener('dragover', (e) => { e.preventDefault(); folder.classList.add('drag-over'); });
+        folder.addEventListener('dragleave', () => { folder.classList.remove('drag-over'); });
+        folder.addEventListener('drop', (e) => {
+          e.preventDefault();
+          e.stopPropagation(); 
+          folder.classList.remove('drag-over');
+          const targetBookName = e.dataTransfer.getData('text/plain');
+          const destFolderName = folder.dataset.folderName;
+
+          if (targetBookName && destFolderName) {
+            snapshot();
+            const foundSubject = state.db.subjects.find(s => s.name === targetBookName);
+            if (foundSubject) {
+              foundSubject.folder = destFolderName;
+              toast(`已將 📘 ${targetBookName} 歸類至 📂 ${destFolderName.replace(/>/g, ' ＞ ')}`);
+            } else {
+              state.db.subjects.push({ name: targetBookName, folder: destFolderName, enabled: true });
+              toast(`已建立科目並歸類至 📂 ${destFolderName.replace(/>/g, ' ＞ ')}`);
+            }
+            state.expandedFolders[destFolderName] = true; 
+            persist(true, false);
+          }
+        });
+      });
+
+      if (historyContainer) {
+        historyContainer.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          if (!e.target.closest('[data-drop-target="folder"]')) {
+            historyContainer.classList.add('drag-container-over');
+          } else {
+            historyContainer.classList.remove('drag-container-over');
+          }
+        });
+
+        historyContainer.addEventListener('dragleave', (e) => {
+          if (e.target === historyContainer) {
+            historyContainer.classList.remove('drag-container-over');
+          }
+        });
+
+        historyContainer.addEventListener('drop', (e) => {
+          e.preventDefault();
+          historyContainer.classList.remove('drag-container-over');
+          if (e.target.closest('[data-drop-target="folder"]')) return;
+
+          const targetBookName = e.dataTransfer.getData('text/plain');
+          if (targetBookName) {
+            snapshot();
+            const foundSubject = state.db.subjects.find(s => s.name === targetBookName);
+            if (foundSubject) {
+              if (foundSubject.folder !== '') {
+                foundSubject.folder = ''; 
+                toast(`已將 📘 ${targetBookName} 移出資料夾，回復為獨立散書`);
+                persist(true, false);
+              }
+            }
+          }
+        });
+      }
     }
 
     function openTaskModal(date, task = null) {
@@ -1223,63 +1441,66 @@
       if (!action) return;
       if (action === 'undoAction') triggerUndo();
       if (action === 'redoAction') triggerRedo();
-      if (action === 'selectKid') {
-        state.db.settings.selectedKid = target.dataset.kid;
-        persist(true, false);
-      }
-      if (action === 'setViewMode') {
-        state.db.settings.viewMode = target.dataset.mode;
-        persist(true, false);
-      }
+      if (action === 'selectKid') { state.db.settings.selectedKid = target.dataset.kid; persist(true, false); }
+      if (action === 'setViewMode') { state.db.settings.viewMode = target.dataset.mode; persist(true, false); }
       if (action === 'toggleDone') toggleDone(target.dataset.taskId);
       if (action === 'openAdmin') {
-        if (state.db.settings.disablePin) {
-          state.screen = 'admin';
-          renderApp();
-        } else {
+        if (state.db.settings.disablePin) { state.screen = 'admin'; renderApp(); }
+        else {
           const pin = prompt('請輸入家長PIN碼');
-          if (pin === state.db.pin) {
-            state.screen = 'admin';
-            renderApp();
-          } else if (pin !== null) toast('PIN 錯誤');
+          if (pin === state.db.pin) { state.screen = 'admin'; renderApp(); }
+          else if (pin !== null) toast('PIN 錯誤');
         }
       }
       if (action === 'goFront') {
-        if (state.clockInterval) {
-          clearInterval(state.clockInterval);
-          state.clockInterval = null;
-        }
-        state.screen = 'front';
-        renderApp();
+        if (state.clockInterval) { clearInterval(state.clockInterval); state.clockInterval = null; }
+        state.screen = 'front'; renderApp();
       }
-      if (action === 'toggleTheme') {
-        state.db.settings.darkMode = !state.db.settings.darkMode;
-        persist(true, false);
-      }
-      if (action === 'setAdminMode') {
-        state.db.settings.adminMode = target.dataset.mode;
-        persist();
-      }
-      if (action === 'selectAdminKid') {
-        state.db.settings.adminKid = target.dataset.kid;
-        persist(true, false);
-      }
-      if (action === 'deleteKid') {
-        deleteKid(target.dataset.kid);
-      }
+      if (action === 'toggleTheme') { state.db.settings.darkMode = !state.db.settings.darkMode; persist(true, false); }
+      if (action === 'setAdminMode') { state.db.settings.adminMode = target.dataset.mode; persist(); }
+      if (action === 'selectAdminKid') { state.db.settings.adminKid = target.dataset.kid; persist(true, false); }
+      if (action === 'deleteKid') deleteKid(target.dataset.kid);
+      
       if (action === 'setSubject') {
         snapshot();
         const subject = state.db.subjects.find(item => item.name === target.dataset.subject);
         if (subject) subject.enabled = target.dataset.enabled === 'true';
         persist(true, false);
       }
-      if (action === 'deleteSubject') {
-        deleteSubject(target.dataset.subject);
+      
+      if (action === 'submitFlexibleAdd') {
+        const subVal = document.getElementById('cfgSubject')?.value || '';
+        const folVal = document.getElementById('cfgFolder')?.value || '';
+        handleFlexibleAdd(subVal, folVal);
+        if (document.getElementById('cfgSubject')) document.getElementById('cfgSubject').value = '';
+        if (document.getElementById('cfgFolder')) document.getElementById('cfgFolder').value = '';
       }
+
+      if (action === 'toggleFolder') {
+        // 如果是點到刪除按鈕，由另一個 action 處理，不執行縮放
+        if(event.target.closest('[data-action="clickDeleteFolder"]')) return;
+        const folderName = target.dataset.folder;
+        state.expandedFolders[folderName] = !state.expandedFolders[folderName];
+        renderApp();
+      }
+
+      if (action === 'clickDeleteFolder') {
+        event.stopPropagation();
+        deleteFolder(target.dataset.folder);
+      }
+
+      if (action === 'selectHistoryBook') {
+        const subName = target.dataset.subject;
+        const pathName = target.dataset.path;
+        state.activeHistoryBook = (state.activeHistoryBook && state.activeHistoryBook.subject === subName) ? null : { subject: subName, path: pathName };
+        renderApp();
+      }
+
+      if (action === 'closeHistoryDrawer') { state.activeHistoryBook = null; renderApp(); }
+      if (action === 'deleteSubject') deleteSubject(target.dataset.subject);
       if (action === 'resetWeek') resetThisWeek();
-      if (action === 'deleteFixed') {
-        deleteFixedTaskRule(target.dataset.id);
-      }
+      if (action === 'deleteFixed') deleteFixedTaskRule(target.dataset.id);
+      
       if (action === 'editTask') {
         const task = state.db.taskInstances.find(item => item.id === target.dataset.taskId);
         if (task) openTaskModal(task.date, task);
@@ -1296,7 +1517,6 @@
         snapshot();
         state.db.settings.disablePin = !state.db.settings.disablePin;
         persist(true, false);
-        toast(state.db.settings.disablePin ? '已暫停 PIN 碼驗證' : '已恢復 PIN 碼驗證');
       }
     }
 
@@ -1304,47 +1524,32 @@
       event.preventDefault();
       const type = form.dataset.form;
       if (type === 'addKid') addKid(form.kid.value);
-      if (type === 'addSubject') addSubject(form.subject.value);
       if (type === 'changePin') {
-        snapshot();
-        state.db.pin = form.pin.value.trim();
-        form.reset();
-        persist(true, false);
-        toast('PIN 已更新');
+        snapshot(); state.db.pin = form.pin.value.trim(); form.reset(); persist(true, false);
+        toast('PIN碼已修改');
       }
       if (type === 'addFixed') addFixedTask(form);
       if (type === 'addTemp') {
-        addTempTask({
-          kid: form.kid.value,
-          subject: form.subject.value,
-          date: form.date.value,
-          memo: form.memo.value
-        });
+        addTempTask({ kid: form.kid.value, subject: form.subject.value, date: form.date.value, memo: form.memo.value });
         form.closest('[data-modal]')?.remove();
       }
       if (type === 'saveTaskEdit') {
-        updateTask(form.taskId.value, {
-          kid: form.kid.value,
-          subject: form.subject.value,
-          memo: form.memo.value.trim()
-        });
+        updateTask(form.taskId.value, { kid: form.kid.value, subject: form.subject.value, memo: form.memo.value.trim() });
         form.closest('[data-modal]')?.remove();
-        toast('任務已更新');
       }
     }
 
     function importJSONFile(file) {
       if (!file) return;
-      if (!confirm('此操作不可復原，確定要完全覆蓋目前資料？')) return;
-      snapshot();
+      if (!confirm('將會覆蓋現有資料，確定匯入？')) return;
       const reader = new FileReader();
       reader.onload = () => {
         try {
           Repository.importJSON(reader.result);
           state.screen = 'front';
           renderApp();
-          toast('JSON 已匯入');
-        } catch { toast('JSON 格式不正確'); }
+          toast('備份匯入成功！');
+        } catch { toast('匯入失敗，格式錯誤'); }
       };
       reader.readAsText(file);
     }
@@ -1353,10 +1558,7 @@
       const target = event.target.closest('[data-action]');
       if (target) handleAction(target, event);
     });
-    document.addEventListener('change', event => {
-      const target = event.target.closest('[data-action]');
-      if (target) handleAction(target, event);
-    });
+
     document.addEventListener('submit', event => {
       const form = event.target.closest('form[data-form]');
       if (form) handleSubmit(form, event);
